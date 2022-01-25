@@ -1,3 +1,3 @@
 # Mineral-Web
 
-<h1>Website of Mineral.gg</h1>
+<h2>Website of Mineral.gg</h2>

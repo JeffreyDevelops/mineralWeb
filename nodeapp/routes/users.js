@@ -7,7 +7,7 @@ router.get('/leaderboard', function(req, res, next) {
     var sql='SELECT * FROM License';
     db.query(sql, function (err, data, fields) {
     if (err) throw err;
-    res.render('leaderboard', { title: 'User List', userData: data});
+    res.render('leaderboard', { title: 'leaderboard_user', userData: data});
   });
 });
 

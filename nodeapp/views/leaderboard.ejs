@@ -24,21 +24,27 @@
     
         
         <%
-        if(userData.length!=0){
-        let i=1;
-        userData.every(function(data) { 
-            userData + 4;
-            %>
+        if(userData.length!==0){
+        let i=1;%>
+        
+        <%userData.forEach(function(data) { 
+            if (data !== 20) {
+                userData.length = 20;
+           
+    %>
+        
         <tr>
-            <th scope="row"><%=i; %></td>
+            <th scope="row"><%=i++; %></td>
             <td><%=data.NAME %></td>
             <td><%=data.UUID %></td>
         </tr>
-        <%  i++; }) %>
+        <% } %>
+        <% })%> 
         <% } else { %>
             <tr>
                 <td colspan="7">No Data Found</td>
             </tr>
+        
         <% } %>
     
     </table>

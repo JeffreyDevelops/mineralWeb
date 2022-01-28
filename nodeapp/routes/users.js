@@ -4,7 +4,7 @@ var db=require('../database');
 // another routes also appear here
 // this script to fetch data from MySQL databse table
 router.get('/leaderboard', function(req, res, next) {
-    var sql='SELECT * FROM License';
+    var sql='SELECT * FROM elo';
     db.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.render('leaderboard', { title: 'leaderboard_user', userData: data});

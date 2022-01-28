@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var db=require('../database');
+let express = require('express');
+let router = express.Router();
+let db=require('../database');
 // another routes also appear here
 // this script to fetch data from MySQL databse table
 router.get('/leaderboard', function(req, res, next) {
-    var sql='SELECT * FROM elo';
+    let sql='SELECT * FROM elo';
     db.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.render('leaderboard', { title: 'leaderboard_user', userData: data});

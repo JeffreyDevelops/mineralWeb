@@ -2,3 +2,11 @@
     display: flex;
     justify-content: center;
 }
+
+.rounded {
+    padding-right: 1rem;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    width: 45rem;
+}

@@ -16,8 +16,8 @@
         
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">UUID</th>
+            <th scope="col">Player</th>
+            <th scope="col">Elo</th>
         </tr>
 
     
@@ -27,15 +27,17 @@
         let i=1;%>
         
         <%userData.forEach(function(data) { 
+            let url = `https://crafatar.com/avatars/${data.UUID}.png?size=24&default=MHF_Steve&overlay`;
             if (data !== 20) {
                 userData.length = 20;
-           
+                
     %>
         
         <tr>
-            <th scope="row"><%=i++; %></td>
-            <td><%=data.PLAYER %></td>
-            <td><%=data.ELO %></td>
+            <th style="font-size: 1.4rem; margin-left: 10px" scope="row"><%=`${i++}#`; %></td>
+            <td style="font-size: 1.4rem; margin-left: 10px"><img class="rounded" src="<%=url%>" alt=""><%=data.PLAYER %></td>
+            <td style="font-size: 1.4rem; margin-left: 10px"><%=data.ELO %></td>
+            
         </tr>
         <% } %>
         <% })%> 

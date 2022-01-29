@@ -6,7 +6,7 @@ let db=require('../database');
 
 
 router.get('/leaderboard', function(req, res, next) {
-    let sql='SELECT * FROM leaderboard';
+    let sql='SELECT * FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
     db.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.render('leaderboard', { title: 'leaderboard_user', userData: data});

@@ -7,6 +7,23 @@
     padding-right: 1rem;
 }
 
-tbody, td, tfoot, th, thead, tr {
-    width: 45rem;
+/* th - header (classes) */
+
+.rank {
+    width: 10rem;
+}
+
+.player {
+ width: 70rem;
+}
+
+.elo {
+    width: 30rem;
+}
+
+
+@media (max-width: 390px) {
+    tbody, td, tfoot, th, thead, tr {
+        width: 45rem;
+    }
 }

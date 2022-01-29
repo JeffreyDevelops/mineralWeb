@@ -11,13 +11,13 @@
   <title>Leaderboard</title>
 </head>
 <body>
-    <div class="table-data table-responsive">
+    <div class="table-data .table-responsive">
     <table class="flex-container table table-dark table-striped">
         
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Player</th>
-            <th scope="col">Elo</th>
+            <th class="rank" scope="col">Rank</th>
+            <th class="player" scope="col">Player</th>
+            <th class="elo" scope="col">Elo</th>
         </tr>
 
     
@@ -34,9 +34,9 @@
     %>
         
         <tr>
-            <th style="font-size: 1.4rem; margin-left: 10px" scope="row"><%=`${i++}#`; %></td>
-            <td style="font-size: 1.4rem; margin-left: 10px"><img class="rounded" src="<%=url%>" alt=""><%=data.PLAYER %></td>
-            <td style="font-size: 1.4rem; margin-left: 10px"><%=data.ELO %></td>
+            <th style="font-size: 1.4rem;" scope="row"><%=`${i++}#`; %></td>
+            <td style="font-size: 1.4rem;"><img class="rounded" src="<%=url%>" alt=""><%=data.PLAYER %></td>
+            <td style="font-size: 1.4rem;"><%=data.ELO %></td>
             
         </tr>
         <% } %>

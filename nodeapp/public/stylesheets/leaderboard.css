@@ -21,6 +21,10 @@
     width: 30rem;
 }
 
+.pagination {
+    justify-content: center;
+}
+
 
 @media (max-width: 390px) {
     tbody, td, tfoot, th, thead, tr {

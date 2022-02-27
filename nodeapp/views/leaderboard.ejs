@@ -49,15 +49,15 @@
     </table>
     <div class="break"></div>
     <!--Display the links to the pages-->
-    <% if(page > 1) { %> <a href="/?page=<%=page-1%>">Before</a> <% } %>
+    <% if(page > 1) { %> <a href="http://localhost:3000/leaderboard/?page=<%=page-1%>">Before</a> <% } %>
     <% for(let i = iterator; i <= endingLink; i++) { %>
         <% if(i === page) { %>
-        <a class="selectedLink" href="/?page=<%=i%>"><%=i%></a>
+        <a class="selectedLink" href="http://localhost:3000/leaderboard/?page=<%=i%>"><%=i%></a>
         <% continue; %>
     <% } %>
-        <a href="/?page=<%=i%>"><%=i%></a>
+        <a href="http://localhost:3000/leaderboard/?page=<%=i%>"><%=i%></a>
         <% } %>
-        <% if(page < numberofPages) { %> <a href="./?page=<%=page+1%>">After</a> <% } %>
+        <% if(page < numberofPages) { %> <a href="http://localhost:3000/leaderboard/?page=<%=page+1%>">After</a> <% } %>
 </div>
 
     <!-- Bootstrap JS -->

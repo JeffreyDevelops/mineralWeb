@@ -30,8 +30,8 @@ router.get('/', function(req, res, next) {
     let iterator = (page - 5) < 1 ? 1 : page - 5;
     let endingLink = (iterator + 9) <= numberofPages ? (iterator + 9) : page + 
     (numberofPages - page);
-    if(endingLink < (page + 4)) {
-      iterator -= (page + 4) - numberofPages;
+    if(endingLink < (page + 1)) {
+      iterator -= (page + 1) - numberofPages;
     }
     res.render('leaderboard', {userData: data, page, iterator, endingLink, numberofPages});
   });

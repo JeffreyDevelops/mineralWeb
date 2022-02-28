@@ -17,9 +17,9 @@ router.get('/', function(req, res, next) {
   const numberofPages = Math.ceil(numOfResults / resultsPerPage);
   let page = req.query.page ? Number(req.query.page) : 1;
   if(page > numberofPages) {
-    res.redirect("/?page="+encodeURIComponent(numberofPages));
+    res.redirect("http://localhost:3000/leaderboard/?page="+encodeURIComponent(numberofPages));
   } else if (page < 1) {
-    res.redirect("/?page="+encodeURIComponent("1"));
+    res.redirect("http://localhost:3000/leaderboard/?page="+encodeURIComponent("1"));
   }
   //Determine the SQL LIMIT starting number
   const startingLimit = (page - 1) * resultsPerPage;
@@ -27,11 +27,11 @@ router.get('/', function(req, res, next) {
   sql = `SELECT * FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC LIMIT  ${startingLimit}, ${resultsPerPage}`;
   db.query(sql, (err, data) =>{
     if (err) throw err;
-    let iterator = (page - 5) < 1 ? 1 : page - 5;
-    let endingLink = (iterator + 9) <= numberofPages ? (iterator + 9) : page + 
+    let iterator = (page - 3) < 1 ? 1 : page;
+    let endingLink = (iterator + 5) <= numberofPages ? (iterator + 5) : page + 
     (numberofPages - page);
-    if(endingLink < (page + 1)) {
-      iterator -= (page + 1) - numberofPages;
+    if(endingLink < (page + 4)) {
+      iterator -= (page + 4) - numberofPages;
     }
     res.render('leaderboard', {userData: data, page, iterator, endingLink, numberofPages});
   });

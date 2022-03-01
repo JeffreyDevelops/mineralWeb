@@ -5,12 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var leaderboardRouter = require('./routes/leaderboard');
+var leaderboardRouter = require('./routes/player');
 ;
 var app = express();
 
 // view engine setup
 app.use('/', indexRouter);
 app.use('/leaderboard', leaderboardRouter);
+app.use('/player', leaderboardRouter);
 
 
 

@@ -24,8 +24,7 @@ router.get('/', function(req, res, next) {
   } else if (page < 1) {
     global.location = "http://localhost:3000/leaderboard/?page=1";
   }
-  
-  
+
   //Determine the SQL LIMIT starting number
   const startingLimit = (page - 1) * resultsPerPage; 
   // Get the releavant number of POSTS for this starting page
@@ -34,7 +33,6 @@ router.get('/', function(req, res, next) {
     if (err) {
       global.location = "http://localhost:3000/leaderboard/?page=1";
     } 
-      
     let iterator = (page - 3) < 1 ? 1 : page;
     let endingLink = (iterator + 5) <= numberofPages ? (iterator + 5) : page + 
     (numberofPages - page);

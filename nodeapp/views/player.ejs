@@ -14,10 +14,16 @@
     <br>
     <br>
 
+    
+
     <%userData.forEach(function(data) { 
-                
+    
         %>
-    <img src="https://visage.surgeplay.com/full/512/${data.UUID}" alt="">
+        
+    <img src="<%=`https://visage.surgeplay.com/full/512/${data.UUID}`%>" alt="">
+    
     <% })%> 
+    
+   
 </body>
 </html>

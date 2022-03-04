@@ -3,24 +3,23 @@ var router = express.Router();
 let db=require('../database');
 
 /* GET player page. */
-router.get('/', function(req, res, next) {
+    router.get('/:username', function(req, res, next) {
     let sql='SELECT UUID, PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
     db.query(sql, function (err, data, fields) {
+  
+      let params = req.params.username;
 
-  
-  let page = req.query.player ? String(req.query.player) : "Steve";
-  
   //Determine the SQL LIMIT starting number
-  let PlayerPerPage = 5;  
+  let PlayerPerPage = 1;  
   // Get the releavant number of POSTS for this starting page
-  sql = `SELECT UUID, PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC LIMIT ${page}, ${PlayerPerPage}`;
+  sql = `SELECT UUID, PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC LIMIT ${params}, ${PlayerPerPage}`;
+  console.log(params);
   console.log(PlayerPerPage);
-  console.log(page);
   console.log(sql);
   db.query(sql, (err, data) =>{
 
 
-    res.render('player', {userData: data, page, PlayerPerPage});    
+    res.render('player', {userData: data, PlayerPerPage, params});    
 });
 }); 
 });

@@ -14,17 +14,25 @@
     <br>
     <br>
 
-    <% if (params === userData) { %>
+    
+    <% if (Number.isInteger(params)) { %>
+        <tr>
+            <td colspan="7">404 Error :)</td>
+        </tr>
+    <% } else { %>
 
-    <%userData.forEach(function(data) { 
+        <%userData.forEach(function(data) { 
     
-        %>
+            %>
+            
+        <img src="<%=`https://visage.surgeplay.com/full/512/${data.UUID}`%>" alt="">
         
-    <img src="<%=`https://visage.surgeplay.com/full/512/${data.UUID}`%>" alt="">
+        <% })%>
+
+        <% } %>
     
-    <% })%>
     
-    <% } %>
+    
         
    
 </body>

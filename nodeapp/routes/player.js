@@ -28,9 +28,7 @@ let db=require('../database');
   if (push_player.includes(parameter) === true) {
     let UUID = push_player.indexOf(parameter);
     let UUID_player = push_player[UUID + 1];
-    console.log(UUID);
-    console.log(UUID_player);
-    
+
     res.send(`<h1>${parameter}</h1>
     <br>
 

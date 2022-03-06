@@ -20,14 +20,23 @@ let db=require('../database');
   var push_player = [];
   Object.keys(data).forEach(function(key) {
     row = data[key];
-    push_player.push(row.PLAYER);
-    console.log(push_player);
+    push_player.push(row.PLAYER, row.UUID);
+    // console.log(push_player);
   });
   
 
   if (push_player.includes(parameter) === true) {
-    console.log(row.PLAYER);
-    res.send(`<h1>${parameter}</h1>`);
+    let UUID = push_player.indexOf(parameter);
+    let UUID_player = push_player[UUID + 1];
+    console.log(UUID);
+    console.log(UUID_player);
+    
+    res.send(`<h1>${parameter}</h1>
+    <br>
+
+    <img src="https://visage.surgeplay.com/full/512/${UUID_player}" alt="">
+
+    `);
   } else {
      res.send(`<h1>Something went wrong...</h1>`)
   }

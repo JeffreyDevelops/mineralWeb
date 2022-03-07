@@ -24,19 +24,13 @@ let db=require('../database');
     // console.log(push_player);
   });
   
+  let UUID = push_player.indexOf(parameter);
+  let UUID_player = push_player[UUID + 1];
 
-  if (push_player.includes(parameter) === true) {
-    let UUID = push_player.indexOf(parameter);
-    let UUID_player = push_player[UUID + 1];
-
-    res.send(`<h1>${parameter}</h1>
-    <br>
-
-    <img src="https://visage.surgeplay.com/full/512/${UUID_player}" alt="">
-
-    `);
-  } else {
-     res.send(`<h1>Something went wrong...</h1>`)
+  if (push_player.includes(parameter) === false) {
+    
+    res.send(`<h1>Something went wrong...</h1>`);
+     
   }
   
   
@@ -45,7 +39,7 @@ let db=require('../database');
       global.location = "https://localhost:3000";
     }
 
-    res.render('player', {userData: data, PlayerPerPage, params, parameter, resultArray});    
+    res.render('player', {userData: data, PlayerPerPage, push_player, parameter, resultArray, UUID, UUID_player});    
 });
 }); 
 });

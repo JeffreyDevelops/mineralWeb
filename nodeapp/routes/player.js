@@ -16,8 +16,8 @@ let db=require('../database');
   let PlayerPerPage = 1;  
   // Get the releavant number of POSTS for this starting page
   sql = `SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC`;
-  var row;
-  var push_player = [];
+  global.row;
+  global.push_player = [];
   Object.keys(data).forEach(function(key) {
     row = data[key];
     push_player.push(row.PLAYER, row.UUID);
@@ -26,6 +26,7 @@ let db=require('../database');
   
   let UUID = push_player.indexOf(parameter);
   let UUID_player = push_player[UUID + 1];
+
 
   if (push_player.includes(parameter) === false) {
     

@@ -47,6 +47,11 @@ body {
   border-bottom: 1px solid #222529;
 }
 
+.trans-pic {
+  max-width: 200px!important;
+  max-height: 200px!important;
+}
+
 
 
 

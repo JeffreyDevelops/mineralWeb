@@ -8,6 +8,8 @@ body {
   background-color: black;
 }
 
+/* === Navbar === */
+
 .bg-dark {
   background-color: #0e1111!important;
   border-bottom: 1px solid #222529;
@@ -25,8 +27,20 @@ body {
   border-bottom: 1px solid #222529;
 }
 
+/* === KB section === */
+
 .kb {
   background-color: #0e1111;
+  padding: 0;
+  width: 100%;
+  height: 27rem;
+  border-bottom: 1px solid #222529;
+}
+
+/* === Translation section === */
+
+.mc-trans {
+  background-color: #0b0f13;
   padding: 0;
   width: 100%;
   height: 27rem;

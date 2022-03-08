@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'Patrick Hand', cursive;
+  src: url(../fonts/PatrickHand-Regular.ttf);
+}
+
+body {
+  font-family: 'Patrick Hand', cursive;
+  background-color: black;
+}
+
+.bg-dark {
+  background-color: #0e1111!important;
+  border-bottom: 1px solid #222529;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  margin-left: .5rem;
+}
+
+.bg-1 {
+  background-image: url(../images/home-bg.png);
+  width: 100%;
+  height: 25rem;
+  border-bottom: 1px solid #222529;
+}
+
+.kb {
+  background-color: #0e1111;
+  padding: 0;
+  width: 100%;
+  height: 27rem;
+  border-bottom: 1px solid #222529;
+}
+
+
+
+

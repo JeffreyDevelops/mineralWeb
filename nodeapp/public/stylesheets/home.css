@@ -55,7 +55,7 @@ body {
 .kb {
   background-color: #0e1111;
   width: 100%;
-  height: 27rem;
+  height: 35rem;
   border-bottom: 1px solid #222529;
 }
 
@@ -64,14 +64,34 @@ body {
 .mc-trans {
   background-color: #0b0f13;
   width: 100%;
-  height: 27rem;
+  height: 35rem;
   border-bottom: 1px solid #222529;
 }
 
-.trans-pic {
-  max-width: 300px;
-  max-height: 300px;
+
+@media (max-width: 1080px) {
+  .kb-paragraph {
+    inline-size: none!important;
+  }
 }
+
+@media (min-width: 1080px){
+  .kb-paragraph {
+    inline-size: 550px;
+  }
+}
+
+@media (min-width: 992px) {
+   .trans-paragraph  {
+    inline-size: 550px;
+  }
+  .kb-header, .trans-header {
+    letter-spacing: .6rem;
+  }
+}
+
+
+
 
 
 

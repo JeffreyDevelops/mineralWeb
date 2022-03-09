@@ -96,6 +96,19 @@ body {
  }
 }
 
+@media (min-width: 1060px) {
+
+  .kb-header, .trans-header {
+    font-size: 2rem;
+  }
+  .kb-paragraph, .trans-paragraph {
+    font-size: 1.3rem;
+  }
+
+}
+
+
+
 @media (max-width: 1080px) {
   .kb-paragraph {
     inline-size: none!important;

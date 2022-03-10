@@ -112,6 +112,12 @@ body {
   .mineral-slogan {
     font-size: 2rem;
   }
+  .kb-paragraph {
+    inline-size: 550px;
+  }
+  .kb-paragraph  {
+    inline-size: 550px;
+  }
   .trans-paragraph  {
    inline-size: 550px;
  }
@@ -139,20 +145,6 @@ body {
     font-size: 1.3rem;
   }
 
-}
-
-
-
-@media (max-width: 1080px) {
-  .kb-paragraph {
-    inline-size: none!important;
-  }
-}
-
-@media (min-width: 1080px){
-  .kb-paragraph {
-    inline-size: 550px;
-  }
 }
 
 @media (min-width: 1372px) {

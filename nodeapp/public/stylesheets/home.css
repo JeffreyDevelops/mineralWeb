@@ -134,6 +134,17 @@ body {
   .navbar-nav {
     gap: 0!important;
   }
+
+  .skin-size {
+    width: 4rem!important;
+    height: 4rem!important;
+    justify-content: center;
+  }
+
+  .top-player-container {
+    gap: 2rem!important;
+  }
+
 }
 
 @media (min-width: 1060px) {

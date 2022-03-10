@@ -99,6 +99,14 @@ body {
   margin-right: auto;
 }
 
+/* === TOP-PLAYERS === */
+.top-players {
+  background-color: #0e1111;
+  width: 100%;
+  height: 35rem;
+  border-bottom: 1px solid #222529;
+}
+
 /* === MEDIA QUERIES === */
 @media (min-width: 992px) {
   .mineral-slogan {

@@ -14,7 +14,7 @@ let db=require('../database');
 
   let resultArray = Object.values(JSON.parse(JSON.stringify(data)));
   let PlayerPerPage = 1;  
-  // Get the releavant number of POSTS for this starting page
+  
   sql = `SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC`;
   global.row;
   global.push_player = [];
@@ -33,14 +33,13 @@ let db=require('../database');
     res.send(`<h1>Something went wrong...</h1>`);
      
   }
-  
-  
+
   db.query(sql, (err, data) =>{
     if (err) {
       global.location = "https://localhost:3000";
     }
 
-    res.render('player', {userData: data, PlayerPerPage, push_player, parameter, resultArray, UUID, UUID_player});    
+    res.render('player', {userData: data, PlayerPerPage, push_player, parameter, resultArray, UUID, UUID_player});  
 });
 }); 
 });

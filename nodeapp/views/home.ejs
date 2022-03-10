@@ -75,8 +75,27 @@
       </div>
       </div>
     </div>
-
     
+    <!-- Top Players -->
+    <div class="container-fluid" style="padding: 0;"></div>
+    <div style="padding: 30px;" class="top-players d-flex flex-column align-items-center">
+      <h1 style="color: #04329b; text-decoration: underline rgba(255, 255, 255, 0.795); text-underline-offset: 8px;">Top Player</h1>
+      <div style="margin-top: 3rem; gap: 4rem;" class="d-flex flex-row">
+      <div id="top_player_1">
+      <img src="<%=`https://crafatar.com/avatars/${top_1}.png?size=80`%>" alt="">
+      <p style="text-align: center; margin-top: 1rem; color: #FFD700; font-weight: bold;"><%=top_1_name%></p>
+    </div>
+    <div id="top_player_2">
+      <img src="<%=`https://crafatar.com/avatars/${top_2}.png?size=80`%>" alt="">
+      <p style="text-align: center; margin-top: 1rem; color: silver; font-weight: bold;"><%=top_2_name%></p>
+    </div>
+    <div id="top_player_3">
+      <img src="<%=`https://crafatar.com/avatars/${top_3}.png?size=80`%>" alt="">
+      <p style="text-align: center; margin-top: 1rem; color: #bf8970; font-weight: bold;"><%=top_3_name%></p>
+    </div>
+    </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>

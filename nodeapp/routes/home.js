@@ -3,12 +3,12 @@ var router = express.Router();
 let db=require('../database');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   let sql='SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
-  db.query(sql, function (err, data, fields) {
+  db.query(sql, async function (err, data, fields) {
     global.row;
     global.push_player = [];
-    Object.keys(data).forEach(function(key) {
+    Object.keys(data).forEach(async function(key) {
       row = data[key];
       push_player.push(row.PLAYER, row.UUID);
       });

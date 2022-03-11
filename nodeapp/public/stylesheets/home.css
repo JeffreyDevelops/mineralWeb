@@ -137,7 +137,7 @@ canvas {
   background-color: #0b0f13;
   width: 100%;
   height: 35rem;
-  border-bottom: 1px solid #222529;
+  border-bottom: 3px solid blue;
 }
 
 .trans-paragraph {
@@ -169,6 +169,12 @@ width: 60rem;
 
 .elo {
   width: 30rem;
+}
+
+@media (max-width: 576px) {
+  .top-p {
+    font-size: 1rem!important;
+  }
 }
 
 /* === MEDIA QUERIES === */

@@ -153,6 +153,10 @@ canvas {
   border-bottom: 1px solid #222529;
 }
 
+.skin-size:hover {
+  transform: scale(1.2);
+}
+
 /* th - header (classes) */
 
 .rank {
@@ -200,7 +204,7 @@ width: 60rem;
     height: 4rem!important;
     justify-content: center;
   }
-  
+
   .top-player-container {
     gap: 2rem!important;
   }

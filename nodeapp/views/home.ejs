@@ -95,6 +95,27 @@
       <p style="text-align: center; margin-top: 1rem; color: #bf8970; font-weight: bold;"><%=top_3_name%></p>
     </div>
     </div>
+    <div style="z-index: 1;" class="table-data .table-responsive">
+    <table class="d-flex table table-dark table-striped justify-content-center" style="z-index: 1; margin-top: 3rem;">
+      <tr>
+        <th class="rank" scope="col">Rank</th>
+        <th class="player" scope="col">Player</th>
+        <th class="elo" scope="col">Elo</th>
+    </tr>
+      <%let i=1;%>
+    <%userData.forEach(function(data) { %>
+      
+    
+    <tr style="z-index: 1;">
+        <th style="font-size: 1.4rem;" scope="row"><%=`${i++}#`; %></td>
+        <td style="font-size: 1.4rem;" ><img style="padding-right: 1.5rem;" class="rounded" src="<%=`https://crafatar.com/avatars/${data.UUID}.png?size=30`%>" alt=""><a class="top_players_link" href="http://localhost:3000/player/<%=data.PLAYER%>"><%=data.PLAYER %></a></td>
+        <td style="font-size: 1.4rem;"><%=data.ELO %></td>
+        
+    </tr>
+  
+    <% })%>
+  </table>
+</div> 
     </div>
     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="/javascripts/particle.js"></script>

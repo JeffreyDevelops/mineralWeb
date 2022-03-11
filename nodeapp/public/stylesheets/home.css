@@ -175,7 +175,9 @@ width: 60rem;
   .top-p {
     font-size: 1rem!important;
   }
-  
+  .show-more-btn {
+    margin-top: 2rem;
+  }
 }
 
 /* === MEDIA QUERIES === */
@@ -198,6 +200,9 @@ width: 60rem;
  .mineral-logo {
   width: 100%;
   height: 35rem;
+}
+.show-more-btn {
+  margin-top: 2rem;
 }
 }
 

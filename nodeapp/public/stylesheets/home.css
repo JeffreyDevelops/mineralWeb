@@ -178,6 +178,9 @@ width: 60rem;
   .show-more-btn {
     margin-top: 2rem;
   }
+  .top-players-header {
+    letter-spacing: normal!important;
+  }
 }
 
 /* === MEDIA QUERIES === */

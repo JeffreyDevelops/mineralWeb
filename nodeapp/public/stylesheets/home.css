@@ -12,7 +12,6 @@ body {
 /* ANIMATION */
 canvas {
   display: block;
-  vertical-align: bottom;
 } /* ---- particles.js container ---- */
 #particles-js {
   position: absolute;
@@ -44,7 +43,7 @@ canvas {
 }
 #stats,
 .count-particles {
-  -webkit-user-select: none;
+  user-select: none;
   margin-top: 5px;
   margin-left: 5px;
 }

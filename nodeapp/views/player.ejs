@@ -9,14 +9,27 @@
 </head>
 <body>
 
-    <% if (push_player.includes(parameter) === true) { %>
+
     
-        <h1><%=parameter%></h1>
+  
+    <%const array = push_player%>
+    <%let name = parameter%>
+    <% const result = array.find(element => { %>
+
+        <% return element.toLowerCase() === name.toLowerCase() %>
+        
+    <% }); %>
+    <% console.log(result) %>
+    <%let UUID = array.indexOf(result);%>
+    <%let UUID_player = array[UUID + 1];%>
+    <% if (array.includes(result) === true) { %>
+        
+        <h1><%=result%></h1>
 
         <img src="https://visage.surgeplay.com/full/512/<%=UUID_player%>" alt="">
 
         <% } else { %>
-        
+            
             <h1>Something went wrong...</h1>
 
             <% } %>

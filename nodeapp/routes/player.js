@@ -24,16 +24,14 @@ let db=require('../database');
     // console.log(push_player);
   });
   
-  let UUID = push_player.indexOf(parameter);
-  let UUID_player = push_player[UUID + 1];
-
+  
 
   db.query(sql, (err, data) =>{
     if (err) {
       global.location = "https://localhost:3000";
     }
 
-    res.render('player', {userData: data, PlayerPerPage, push_player, parameter, resultArray, UUID, UUID_player});  
+    res.render('player', {userData: data, PlayerPerPage, push_player, parameter, resultArray});  
 });
 }); 
 });

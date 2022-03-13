@@ -27,7 +27,6 @@ router.get('/', async function(req, res, next) {
         var pp = [];
         Object.keys(p_data).forEach(async function(key) {
           ee = p_data[key];
-          console.log(ee.PLAYER)
           pp.push(ee.PLAYER);
           });
           

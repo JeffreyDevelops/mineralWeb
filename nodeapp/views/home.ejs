@@ -31,6 +31,7 @@
               <button style="background-color: #04329b!important; color: rgba(255, 255, 255, 0.795)!important;" class="search-btn btn btn-outline-primary" type="button">Search</button>
             </form>
           </div>
+          
         </div>
       </div>
     </nav>
@@ -38,21 +39,22 @@
     <script>
       let search_inp = document.querySelector(".search-input");
       let target = document.querySelector(".search-btn");
-      const array = <%-JSON.stringify(pp).toLowerCase()%>;
+      const array = <%-JSON.stringify(pp)%>;
       
       
            
       target.addEventListener("click", e =>{
-        let search_player = search_inp.value.toLowerCase();
+        let search_player = search_inp.value.charAt(0).toUpperCase() + search_inp.value.slice(1).toLowerCase();
         // 👉️ Not Supported in IE 6-11
         console.log(search_player);
 
 const match = array.find(element => {
   if (element.includes(search_player)) {
     return true;
+    
   }
 });
-
+location.href = `/player/${match}`;
 console.log(match); // 👉️ hello
 
       });

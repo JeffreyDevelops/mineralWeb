@@ -28,12 +28,6 @@ let db=require('../database');
   let UUID_player = push_player[UUID + 1];
 
 
-  if (push_player.includes(parameter) === false) {
-    
-    res.send(`<h1>Something went wrong...</h1>`);
-     
-  }
-
   db.query(sql, (err, data) =>{
     if (err) {
       global.location = "https://localhost:3000";

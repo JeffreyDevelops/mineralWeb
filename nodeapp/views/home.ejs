@@ -27,7 +27,7 @@
             <a class="nav-link" href="#" style="font-size: 1.2rem;">Leaderboards</a>
             <a class="nav-link" href="#" style="font-size: 1.2rem;">FAQ</a>
             <form class="d-flex">
-              <input style="border: none; background-color: transparent; color: rgba(255, 255, 255, 0.795); font-weight: bold; border-bottom: 1px solid #04329b;border-radius: 0; padding: 0;" class="search-input form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <input style="border: none; background-color: transparent; color: rgba(255, 255, 255, 0.795); font-weight: bold; border-bottom: 1px solid #04329b;border-radius: 0; padding: 0;" class="search-input form-control me-2" type="search" placeholder="Search" aria-label="Search" onkeypress="return event.keyCode != 13;">
               <button style="background-color: #04329b!important; color: rgba(255, 255, 255, 0.795)!important;" class="search-btn btn btn-outline-primary" type="button">Search</button>
             </form>
           </div>
@@ -39,21 +39,21 @@
     <script>
       let search_inp = document.querySelector(".search-input");
       let target = document.querySelector(".search-btn");
-      const array = <%-JSON.stringify(pp)%>;
+      const array = <%-JSON.stringify(pp).toLocaleLowerCase()%>;
       
       
            
       target.addEventListener("click", e =>{
 
-      const match = array.find(element => {
-          return element.toLowerCase() === search_inp.value.toLowerCase();
+      
+        const match = array.find(element => {
+        if (element.includes(search_inp.value.toLocaleLowerCase())) {
+          return true;
+        }
       });
-      if (array.includes(match) === true) {
-        console.log(search_inp.value);
-        console.log(match);
-        location.href = `/player/${match}`;
-      }
-
+      console.log(search_inp.value);
+      console.log(match);
+      location.href = `/player/${match}`;
       });
     </script>
     

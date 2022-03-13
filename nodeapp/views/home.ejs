@@ -15,25 +15,37 @@
     
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-      <div class="container-fluid">
+      <div style="    padding-right: 8rem; padding-left: 8rem;" class="container-fluid">
         <a class="navbar-brand glow" href="#"><span style="color: #04329b; font-weight: bold;">MINE</span>RAL</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
+          <div style="gap: 2rem;" class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="#" style="font-size: 1.2rem; color: #04329b;">Home</a>
             <a class="nav-link" href="#" style="font-size: 1.2rem;">Staff</a>
             <a class="nav-link" href="#" style="font-size: 1.2rem;">Leaderboards</a>
             <a class="nav-link" href="#" style="font-size: 1.2rem;">FAQ</a>
             <form class="d-flex">
-              <input style="border: none; background-color: transparent; color: rgba(255, 255, 255, 0.795); font-weight: bold; border-bottom: 1px solid #04329b;border-radius: 0; padding: 0;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button style="background-color: #04329b!important; color: rgba(255, 255, 255, 0.795)!important;" class="btn btn-outline-primary" type="button">Search</button>
+              <input style="border: none; background-color: transparent; color: rgba(255, 255, 255, 0.795); font-weight: bold; border-bottom: 1px solid #04329b;border-radius: 0; padding: 0;" class="search-input form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button style="background-color: #04329b!important; color: rgba(255, 255, 255, 0.795)!important;" class="search-btn btn btn-outline-primary" type="button">Search</button>
             </form>
           </div>
         </div>
       </div>
     </nav>
+
+    <script>
+      let search_inp = document.querySelector(".search-input");
+      let target = document.querySelector(".search-btn");
+      let testo = []
+      let testo_2 = `<%=ee.PLAYER%>, `;
+      testo.push(testo_2);
+      target.addEventListener("click", e =>{
+      console.log(testo);  
+      });
+    </script>
+    
 
     <!-- inner-land-page -->
     <div class="container-fluid" style="padding: 0;">
@@ -109,7 +121,7 @@
       <%let i=1;%>
     <%userData.forEach(function(data) { %>
       
-    
+    <%userData.length = 3;%>
     <tr style="z-index: 1;">
         <th style="font-size: 1.4rem;" scope="row"><%=`${i++}#`; %></td>
         <td style="font-size: 1.4rem;" ><img style="padding-right: 1.5rem;" class="rounded" src="<%=`https://crafatar.com/avatars/${data.UUID}.png?size=30`%>" alt=""><a class="top_players_link" href="http://localhost:3000/player/<%=data.PLAYER%>"><%=data.PLAYER %></a></td>

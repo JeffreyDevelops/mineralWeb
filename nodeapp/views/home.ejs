@@ -38,22 +38,23 @@
     <script>
       let search_inp = document.querySelector(".search-input");
       let target = document.querySelector(".search-btn");
-      const array = <%-JSON.stringify(pp)%>;
-      // 👉️ Not Supported in IE 6-11
+      const array = <%-JSON.stringify(pp).toLowerCase()%>;
       
-
       
-
-
+           
       target.addEventListener("click", e =>{
-        const match = array.find(element => {
-        if (element.includes(search_inp.value)) {
-          return true;
-        } 
-        
-      });
-        console.log(match); // 👉️ hello
-        console.log(search_inp.value);
+        let search_player = search_inp.value.toLowerCase();
+        // 👉️ Not Supported in IE 6-11
+        console.log(search_player);
+
+const match = array.find(element => {
+  if (element.includes(search_player)) {
+    return true;
+  }
+});
+
+console.log(match); // 👉️ hello
+
       });
     </script>
     

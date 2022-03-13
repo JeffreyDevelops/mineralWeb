@@ -44,18 +44,15 @@
       
            
       target.addEventListener("click", e =>{
-        let search_player = search_inp.value.charAt(0).toUpperCase() + search_inp.value.slice(1).toLowerCase();
-        // 👉️ Not Supported in IE 6-11
-        console.log(search_player);
 
-const match = array.find(element => {
-  if (element.includes(search_player)) {
-    return true;
-    
-  }
-});
-location.href = `http://localhost:3000/player/${match}`;
-console.log(match); // 👉️ hello
+      const match = array.find(element => {
+          return element.toLowerCase() === search_inp.value.toLowerCase();
+      });
+      if (array.includes(match) === true) {
+        console.log(search_inp.value);
+        console.log(match);
+        location.href = `/player/${match}`;
+      }
 
       });
     </script>

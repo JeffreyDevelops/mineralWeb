@@ -45,25 +45,30 @@
         }
       });
       </script>
-      
+
     <script>
       let search_inp = document.querySelector(".search-input");
       let target = document.querySelector(".search-btn");
       const array = <%-JSON.stringify(pp).toLocaleLowerCase()%>;
-      
-      
-           
       target.addEventListener("click", e =>{
 
-      
         const match = array.find(element => {
         if (element.includes(search_inp.value.toLocaleLowerCase())) {
           return true;
+          
+        } else {
+          console.log("it works!");
         }
       });
+      if (search_inp.value !== "") {
+        location.href = `/player/${match}`;
+      } else {
+        console.log("It doesn't work");
+      }
+      
       console.log(search_inp.value);
       console.log(match);
-      location.href = `/player/${match}`;
+     
       });
     </script>
     

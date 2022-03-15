@@ -185,6 +185,15 @@ width: 60rem;
   color: #04329b!important;
 }
 
+@media (max-width: 400px) {
+  .mineral-foot-links {
+    display: none!important;
+  }
+  .footer-brand {
+    font-size: 2rem!important;
+  }
+}
+
 @media (min-width: 576px) {
   .mineral-logo {
     width: 100%;
@@ -227,6 +236,10 @@ width: 60rem;
 }
 
 @media (max-width: 992px) {
+  .footer-brand {
+    display: flex!important;
+    justify-content: center!important;
+  }
   .nav-padding {
     padding-right: 1rem!important;
     padding-left: 1rem!important;
@@ -265,11 +278,17 @@ width: 60rem;
 
 }
 
+
 @media (max-width:1200px) {
   .nav-padding {
     padding-left: 1rem!important;
     padding-right: 1rem!important;
   }
+
+  .footer-line {
+    width: 100%!important;
+  }
+
 }
 
 @media (min-width: 1372px) {

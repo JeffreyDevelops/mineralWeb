@@ -117,8 +117,8 @@
     <div id="particles-js" class="container-fluid" style="padding: 0; border-bottom: 3px solid #04329b;">
     </div>
     <div style="padding: 30px;" class="top-players d-flex flex-column align-items-center">
-      <h1 class="top-players-header" style="z-index: 1; color: #04329b; text-decoration: underline rgba(255, 255, 255, 0.795); text-underline-offset: 8px; letter-spacing: .6rem; font-weight: bold;"><span style="color: rgba(255, 255, 255, 0.795);">Top</span> Players <span>&#9876;</span></h1>
-      <div style="margin-top: 3rem; gap: 4rem; z-index: 1;" class="d-flex flex-row top-player-container">
+      <h1 class="top-players-header" style="color: #04329b; text-decoration: underline rgba(255, 255, 255, 0.795); text-underline-offset: 8px; letter-spacing: .6rem; font-weight: bold;"><span style="color: rgba(255, 255, 255, 0.795);">Top</span> Players <span>&#9876;</span></h1>
+      <div style="margin-top: 3rem; gap: 4rem;" class="d-flex flex-row top-player-container">
       <div style="text-align: center;" id="top_player_1">
       <a href="http://localhost:3000/player/<%=top_1_name%>"><img class="skin-size" src="<%=`https://visage.surgeplay.com/bust/200/${top_1}`%>" alt=""></a>
       <p class="top-p" style="text-align: center; margin-top: 2rem; color: #FFD700; font-size: 1.4rem; font-weight: bold;"><%=top_1_name%></p>
@@ -132,8 +132,8 @@
       <p class="top-p" style="text-align: center; margin-top: 2rem; color: #bf8970; font-size: 1.4rem; font-weight: bold;"><%=top_3_name%></p>
     </div>
     </div>
-    <div style="z-index: 1;" class="table-data .table-responsive">
-    <table class="d-flex table table-dark table-striped justify-content-center" style="z-index: 1; margin-top: 3rem;">
+    <div class="table-data .table-responsive">
+    <table class="d-flex table table-dark table-striped justify-content-center" style="margin-top: 3rem;">
       <tr>
         <th class="rank" scope="col">Rank</th>
         <th class="player" scope="col">Player</th>
@@ -143,7 +143,7 @@
     <%userData.forEach(function(data) { %>
       
     <%userData.length = 3;%>
-    <tr style="z-index: 1;">
+    <tr>
         <th style="font-size: 1.4rem;" scope="row"><%=`${i++}#`; %></td>
         <td style="font-size: 1.4rem;" ><img style="padding-right: 1.5rem;" class="rounded" src="<%=`https://crafatar.com/avatars/${data.UUID}.png?size=30`%>" alt=""><a class="top_players_link" href="http://localhost:3000/player/<%=data.PLAYER%>"><%=data.PLAYER %></a></td>
         <td style="font-size: 1.4rem;"><%=data.ELO %></td>

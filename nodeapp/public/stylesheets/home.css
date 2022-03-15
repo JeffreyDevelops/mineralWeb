@@ -22,7 +22,11 @@ canvas {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-} /* ---- stats.js ---- */
+  z-index: -1;
+}
+
+
+/* ---- stats.js ---- */
 .count-particles {
   background: #000022;
   position: absolute;

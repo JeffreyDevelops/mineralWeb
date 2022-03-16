@@ -4,7 +4,7 @@ let db=require('../database');
 
 /* GET staff page. */
 router.get('/', async function(req, res, next) {
-    let sql='SELECT PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
+    let sql='SELECT PLAYER FROM leaderboard WHERE Gametype="Owner" ORDER BY ELO DESC';
       db.query(sql, async function (err, p_data, fields) {
         let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
         var ee;

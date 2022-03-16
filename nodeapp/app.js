@@ -6,6 +6,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/home');
 var leaderboardRouter = require('./routes/leaderboard');
 var playerRouter = require('./routes/player');
+var staffRouter = require('./routes/staff');
 ;
 var app = express();
 
@@ -13,6 +14,7 @@ var app = express();
 app.use('/', indexRouter);
 app.use('/leaderboard', leaderboardRouter);
 app.use('/player', playerRouter);
+app.use('/staff', staffRouter);
 
 
 

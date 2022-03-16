@@ -4,7 +4,17 @@ let db=require('../database');
 
 /* GET staff page. */
 router.get('/', async function(req, res, next) {
-    res.render('staff'); 
+    let sql='SELECT PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
+      db.query(sql, async function (err, p_data, fields) {
+        let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
+        var ee;
+        var pp = [];
+        Object.keys(p_data).forEach(async function(key) {
+          ee = p_data[key];
+          pp.push(ee.PLAYER);
+          });
+    res.render('staff', {pp, ee}); 
+});
 });
 
 

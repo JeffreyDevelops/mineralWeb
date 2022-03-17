@@ -84,6 +84,11 @@
 .skin-size:hover {
   transform: scale(1.2);
 }
+
+/* === OWNER === */
+.player_names:hover {
+  color: #FFF!important;
+}
   
   /* === MINERAL FOOTER === */
   .mineral-footer {

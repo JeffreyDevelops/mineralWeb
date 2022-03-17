@@ -85,7 +85,7 @@
               <% sUser.forEach(function(s_data) { %>
                 <div class="d-flex flex-column">
                 <a style="text-align: center; text-decoration: none; margin-top: 1.5rem;" href="/player/<%=s_data.PLAYER%>"><img class="skin-size" src="https://visage.surgeplay.com/full/250/<%=s_data.UUID%>" alt=""></a>
-                <a style="text-align: center; text-decoration: none; margin-top: 1.5rem;" href="/player/<%=s_data.PLAYER%>"><span style="text-align: center; color: #dc3545; font-weight: bold; font-size: 1.2rem;"><%=s_data.PLAYER%></span></a>
+                <a style="text-align: center; text-decoration: none; margin-top: 1.5rem;" href="/player/<%=s_data.PLAYER%>"><span class="player_names" style="text-align: center; color: #dc3545; font-weight: bold; font-size: 1.2rem;"><%=s_data.PLAYER%></span></a>
               </div>
 
            <% }) %>

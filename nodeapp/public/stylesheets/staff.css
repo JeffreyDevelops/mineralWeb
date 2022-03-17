@@ -6,7 +6,7 @@
   body {
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
-    background-color: black;
+    background-color: #15171e;
   }
   
   /* ANIMATION */
@@ -55,6 +55,7 @@
     background-image: url(../images/home-bg.png);
     width: 100%;
     height: 15rem;
+    border-bottom: 5px solid #dc3545;
   }
   
   .mineral-slogan {
@@ -77,52 +78,12 @@
     }
   }
   
-  /* === KB section === */
-  
-  .kb {
-    background-color: #0e1111;
-    width: 100%;
-    height: 35rem;
-    border-bottom: 1px solid #222529;
-  }
-  
-  .kb-paragraph {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* === Translation section === */
-  
-  .mc-trans {
-    background-color: #0b0f13;
-    width: 100%;
-    height: 35rem;
-  }
-  
-  .trans-paragraph {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* === TOP-PLAYERS === */
-  
-  .skin-size:hover {
-    transform: scale(1.2);
-  }
-  
-  /* th - header (classes) */
-  
-  .rank {
-    width: 10rem;
-  }
-  
-  .player {
-  width: 60rem;
-  }
-  
-  .elo {
-    width: 30rem;
-  }
+
+  /* === ZOOM === */
+
+.skin-size:hover {
+  transform: scale(1.2);
+}
   
   /* === MINERAL FOOTER === */
   .mineral-footer {

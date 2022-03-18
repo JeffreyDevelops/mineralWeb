@@ -139,7 +139,11 @@
     }
   }
   
- 
+  @media (max-width: 767px) {
+    #footer-items {
+      justify-content: center!important;
+    }
+  }
   
   @media (min-width: 992px) {
     .mineral-slogan {
@@ -192,6 +196,7 @@
     .top_players_link {
       font-size: 1rem!important;
     }
+
   
   }
   

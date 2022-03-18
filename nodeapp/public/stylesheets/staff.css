@@ -139,16 +139,9 @@
     }
   }
   
-  @media (min-width: 768px) { 
-    .footer-line {
-      width: 89%!important;
-    }
-  }
+ 
   
   @media (min-width: 992px) {
-    .footer-line {
-      width: 100%!important;
-    }
     .mineral-slogan {
       font-size: 2rem;
     }
@@ -212,11 +205,7 @@
   
   }
   
-  @media (min-width:1200px) {
-    .footer-line {
-      width: 89%!important;
-    }
-  }
+ 
   
   @media (max-width:1200px) {
     .nav-padding {

@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var router = express.Router();
+let db=require('./database');
 var indexRouter = require('./routes/home');
 var leaderboardRouter = require('./routes/leaderboard');
 var playerRouter = require('./routes/player');
@@ -41,7 +43,17 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  let sql='SELECT PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
+      db.query(sql, async function (err, p_data, fields) {
+        let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
+        var ee;
+        var pp = [];
+        Object.keys(p_data).forEach(async function(key) {
+          ee = p_data[key];
+          pp.push(ee.PLAYER);
+          });
+  res.render('error', {userData: p_data, resultArray, pp, ee});
+});
 });
 
 module.exports = app;

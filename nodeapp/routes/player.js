@@ -9,7 +9,6 @@ let db=require('../database');
     if (err) {
       global.location = "https://localhost:3000";
     }
-      let params = parseInt(req.params.username);
       let parameter = req.params.username;
 
   let resultArray = Object.values(JSON.parse(JSON.stringify(data)));

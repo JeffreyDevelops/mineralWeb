@@ -77,6 +77,22 @@
       text-shadow: 0 0 2px #fff, 0 0 2px #04329b, 0 0 4px #04329b, 0 0 5px #04329b, 0 0 8px #04329b, 0 0 7px #04329b, 0 0 10px #04329b;
     }
   }
+
+  #glowred {
+    color: #fff;
+    text-align: center;
+    animation: glowred 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes glowred {
+    from {
+      text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 2px red, 0 0 2px red, 0 0 5px red, 0 0 10px red, 0 0 10px red;
+    }
+    
+    to {
+      text-shadow: 0 0 2px #fff, 0 0 2px red, 0 0 4px red, 0 0 5px red 0 0 8px red, 0 0 7px red, 0 0 10px red;
+    }
+  }
   
 
   /* === ZOOM === */

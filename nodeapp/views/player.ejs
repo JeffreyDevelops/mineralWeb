@@ -80,12 +80,12 @@
     <div class="container-fluid" style="padding: 0;">
         <div class="bg-1 d-flex justify-content-center align-items-center">
           <div class="d-flex flex-column align-items-center">
-            <div class="d-flex align-items-center" style="gap: 2rem;">
-                <h1 class="glow" style="text-align: center; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 5rem;"><%=result%></h1>
+            <div class="d-flex align-items-center justify-content-center flex-wrap" style="gap: 2rem;">
+                <h1 class="glow" style="text-align: center; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: min(max(30px, 10vw), 50px);"><%=result%></h1>
                 <% const testo = JSON.stringify(push_player);%>
                 <% let geti = push_player.indexOf(result); %>
                 <% let skin_of_player = push_player[geti + 1]; %>
-                <img style="width: 5rem; height: auto;" src="<%=`https://visage.surgeplay.com/face/${skin_of_player}`%>" alt="">
+                <img style="width: 22%; min-width: 200px; height: auto;" src="<%=`https://visage.surgeplay.com/bust/${skin_of_player}`%>" alt="">
         </div>
           
         </div>
@@ -97,9 +97,8 @@
     <%let UUID_player = array[UUID + 1];%>
     <% if (array.includes(result) === true) { %>
         <title><%=result%> | Mineral</title>
-        <h1><%=result%></h1>
        
-        <img src="https://visage.surgeplay.com/full/512/<%=UUID_player%>" alt="">
+        <!-- <img src="https://visage.surgeplay.com/full/512/<%=UUID_player%>" alt=""> -->
 
         <% } else { %>
             

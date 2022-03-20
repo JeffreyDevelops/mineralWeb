@@ -30,7 +30,7 @@ let db=require('../database');
       global.location = "https://localhost:3000";
     }
 
-    res.render('player', {userData: data, PlayerPerPage, push_player, parameter, resultArray});  
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray});  
 });
 }); 
 });

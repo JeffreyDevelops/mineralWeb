@@ -50,16 +50,22 @@
         let search_inp = document.querySelector(".search-input");
         let target = document.querySelector(".search-btn");
         const array = <%-JSON.stringify(pp).toLocaleLowerCase()%>;
+        const normal_array = <%-JSON.stringify(pp)%>;
         target.addEventListener("click", e =>{
   
           const match = array.find(element => {
           if (element.includes(search_inp.value.toLocaleLowerCase())) {
-            return true;  
+            return true;
           }  
         });
   
+        
         if (search_inp.value !== "") {
-          location.href = `/player/${match}`;
+          let geti = array.indexOf(match); 
+          console.log(match);
+          let right_name = normal_array[geti];
+          console.log(right_name);
+          location.href = `/player/${right_name}`;
         } else {
           alert("You need to type a username of your choice!");
         }

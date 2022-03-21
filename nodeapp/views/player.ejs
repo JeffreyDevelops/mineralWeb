@@ -80,12 +80,13 @@
     <div class="container-fluid" style="padding: 0;">
         <div class="bg-1 d-flex justify-content-center align-items-center">
           <div class="d-flex flex-column align-items-center">
-            <div class="d-flex align-items-center justify-content-center flex-wrap flex-column" style="gap: 1rem;">
-                <h1 class="glow order-1" style="text-align: center; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: min(max(30px, 10vw), 70px);"><%=result%></h1>
+            <div class="d-flex align-items-center justify-content-center flex-wrap" style="gap: 2rem;">
+                <h1 class="glow order-1" style="margin: 0; text-align: center; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: min(max(30px, 10vw), 50px);"><%=result%></h1>
                 <% const testo = JSON.stringify(push_player);%>
                 <% let geti = push_player.indexOf(result); %>
                 <% let skin_of_player = push_player[geti + 1]; %>
-                <img class="order-0" style="width: 22%; min-width: 200px; height: auto;" src="<%=`https://visage.surgeplay.com/bust/${skin_of_player}`%>" alt="">
+                <% let rank = rank_array[geti + 2]; %>
+                <img class="order-0" src="<%=`https://visage.surgeplay.com/face/70/${skin_of_player}`%>" alt="">
         </div>
           
         </div>
@@ -97,8 +98,6 @@
     <%let UUID_player = array[UUID + 1];%>
     <% if (array.includes(result) === true) { %>
         <title><%=result%> | Mineral</title>
-       
-        <!-- <img src="https://visage.surgeplay.com/full/512/<%=UUID_player%>" alt=""> -->
 
         <% } else { %>
             
@@ -108,6 +107,92 @@
 
             <% } %>
         
+
+    <!-- PLAYER INFORMATION -->
+    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 2rem;">
+        <img style="width: 22%; min-width: 200px; height: auto;" src="<%=`https://visage.surgeplay.com/full/${skin_of_player}`%>" alt="">
+        <h1 class="header-target" style="color: rgba(255, 255, 255, 0.795); font-weight: bold; margin-top: .5rem;"><%=result%></h1>
+        
+        <%const ra_array = rank_array%>
+        <%let pa_name = parameter%>
+        <% const result_rank = ra_array.find(element => { %>
+        <% return element.toLowerCase() === pa_name.toLowerCase() %>
+        
+    <% }); %>
+
+    <% const r_array = JSON.stringify(rank_array);%>
+    <% let getindex = rank_array.indexOf(result_rank); %>
+    <% let rank_tag = rank_array[getindex + 1]; %>
+    <% let rank_goal = rank_array[getindex + 2]; %>
+
+    <% console.log(rank_goal) %>
+
+
+    <% switch (rank_goal)  {
+         case "Owner" : %>
+            <script>
+                // Owner rank
+                let owner = document.createElement("span");
+                owner.setAttribute("class", "owner-rank");
+                let ow_target = document.querySelector(".header-target");
+                owner.innerHTML = `<span style="color: #FFF; font-weight: bold;">Owner</span></span>`;
+                ow_target.insertAdjacentElement("afterend", owner);
+            </script>
+        <% break;
+         case "Admin" : %>
+            <script>
+                // Admin rank
+                let admin = document.createElement("span");
+                admin.setAttribute("class", "admin-rank");
+                let a_target = document.querySelector(".header-target");
+                admin.innerHTML = `<span style="color: #FFF; font-weight: bold;">Admin</span></span>`;
+                a_target.insertAdjacentElement("afterend", admin);
+            </script>
+       <% break;
+        case "Moderator" : %>
+            <script>
+                // Moderator rank
+                let moderator = document.createElement("span");
+                moderator.setAttribute("class", "moderator-rank");
+                let mo_target = document.querySelector(".header-target");
+                moderator.innerHTML = `<span style="color: #FFF; font-weight: bold;">Moderator</span></span>`;
+                mo_target.insertAdjacentElement("afterend", moderator);
+            </script>
+        <% break; 
+        case "ChatMod" : %>
+            <script>
+                // ChatMod rank
+                let chatmod = document.createElement("span");
+                chatmod.setAttribute("class", "chatmod-rank");
+                let cm_target = document.querySelector(".header-target");
+                chatmod.innerHTML = `<span style="color: #FFF; font-weight: bold;">ChatMod</span></span>`;
+                cm_target.insertAdjacentElement("afterend", chatmod);
+            </script>
+    <% break; 
+     case "Trial" : %>
+            <script>
+                // Trial rank
+                let trial = document.createElement("span");
+                trial.setAttribute("class", "trial-rank");
+                let t_target = document.querySelector(".header-target");
+                trial.innerHTML = `<span style="color: black; font-weight: bold;">Trial</span></span>`;
+                t_target.insertAdjacentElement("afterend", trial);
+            </script>
+        <% break;
+         default : %>
+            <script>
+            // Default rank
+                let default_rank = document.createElement("span");
+                default_rank.setAttribute("class", "default-rank");
+                let d_target = document.querySelector(".header-target");
+                default_rank.innerHTML = `<span style="color: black; font-weight: bold;">Default</span></span>`;
+                d_target.insertAdjacentElement("afterend", default_rank);
+            </script>
+          <% 
+         } %>
+    </div>
+
+
 
     <!-- FOOTER -->
     <!-- <footer class="container-fluid" style="padding: 0;">

@@ -14,7 +14,7 @@ let db=require('../database');
   let resultArray = Object.values(JSON.parse(JSON.stringify(data)));
   let PlayerPerPage = 1;  
   
-  sql = `SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC`;
+  sql = `SELECT PLAYER, UUID, GAMETYPE FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC`;
   global.row;
   global.push_player = [];
   Object.keys(data).forEach(function(key) {
@@ -23,14 +23,23 @@ let db=require('../database');
     // console.log(push_player);
   });
   
-  
+  sql = `SELECT PLAYER, UUID, GAMETYPE FROM leaderboard WHERE GAMETYPE in ("Owner", "Admin", "Moderator", "ChatMod", "Trial")`;
+  db.query(sql, function (err, rank_data, fields) {
+  global.row_rank;
+  global.rank_array = [];
+  Object.keys(rank_data).forEach(function(key) {
+    row_rank = rank_data[key];
+    rank_array.push(row_rank.PLAYER, row_rank.UUID, row_rank.GAMETYPE);
+    // console.log(push_player);
+  });
 
   db.query(sql, (err, data) =>{
     if (err) {
       global.location = "https://localhost:3000";
     }
 
-    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray});  
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, row_rank, rank_array,});  
+});
 });
 }); 
 });

@@ -85,9 +85,76 @@
   transform: scale(1.2);
 }
 
-/* === OWNER === */
+/* === HOVER COLOR PLAYER NAMES === */
 .player_names:hover {
-  color: #FFF!important;
+  color: #FFF!important; 
+}
+
+/* === PLAYER INFORMATION */
+.owner-rank {
+    background-color: red;
+    width: 60%;
+    padding: .5rem 0 .5rem 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5rem;
+    border-radius: 0.3rem;
+}
+
+.admin-rank {
+    background-color: #dc3545;
+    width: 60%;
+    padding: .5rem 0 .5rem 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5rem;
+    border-radius: 0.3rem;
+}
+
+.moderator-rank {
+    background-color: #0dcaf0;
+    width: 60%;
+    padding: .5rem 0 .5rem 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5rem;
+    border-radius: 0.3rem;
+}
+
+.chatmod-rank {
+    background-color: rgba(255,255,255,.55);
+    width: 60%;
+    padding: .5rem 0 .5rem 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5rem;
+    border-radius: 0.3rem;
+}
+
+.trial-rank {
+    background-color: yellow;
+    width: 60%;
+    padding: .5rem 0 .5rem 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5rem;
+    border-radius: 0.3rem;
+}
+
+.default-rank {
+    background-color: silver;
+    width: 60%;
+    padding: .5rem 0 .5rem 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5rem;
+    border-radius: 0.3rem;
 }
   
   /* === MINERAL FOOTER === */

@@ -15,6 +15,7 @@ let db=require('../database');
   let PlayerPerPage = 1;  
   
   sql = `SELECT PLAYER, UUID, GAMETYPE FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC`;
+  db.query(sql, (err, data) =>{
   global.row;
   global.push_player = [];
   Object.keys(data).forEach(function(key) {
@@ -33,12 +34,22 @@ let db=require('../database');
     // console.log(push_player);
   });
 
-  db.query(sql, (err, data) =>{
-    if (err) {
-      global.location = "https://localhost:3000";
-    }
+  sql = `SELECT PLAYER, ELO, GAMETYPE FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC`;
+  db.query(sql, function (err, nod_data, fields) {
+  global.row_nod;
+  global.nod_array = [];
+  global.nod_elo_array = [];
+  Object.keys(nod_data).forEach(function(key) {
+    row_nod = nod_data[key];
+    nod_array.push(row_nod.PLAYER);
+    nod_elo_array.push(row_nod.ELO);
 
-    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, row_rank, rank_array,});  
+  });
+
+  
+
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, row_rank, rank_array, row_nod, nod_array, nod_elo_array});  
+});    
 });
 });
 }); 

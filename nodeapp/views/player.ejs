@@ -125,8 +125,6 @@
     <% let rank_tag = rank_array[getindex + 1]; %>
     <% let rank_goal = rank_array[getindex + 2]; %>
 
-    <% console.log(rank_goal) %>
-
 
     <% switch (rank_goal)  {
          case "Owner" : %>
@@ -192,10 +190,44 @@
          } %>
     </div>
 
+    
+    <%const nd_a = nod_array%>
+        <%let parand_name = parameter%>
+        <% const result_nd = nd_a.find(element => { %>
+        <% return element.toLowerCase() === parand_name.toLowerCase() %>
+        
+    <% }); %>
+
+    <% const nd_2 = JSON.stringify(nod_array);%>
+    <% let ndindex = nod_array.indexOf(result_nd); %>
+    <% let nd_tag = nod_array[getindex + 1]; %>
+    <% let nd_goal = nod_array[getindex]; %>
+    <% let nd_elo = nod_elo_array[ndindex]; %>
+
+    <div style="margin-top: 2rem; margin-bottom: 2rem;" class="d-flex justify-content-center align-items-center">
+      <div id="player_elo" class="d-flex justify-content-center align-items-center flex-column" style="gap: 1rem;">
+        <div class="d-flex flex-row justify-content-center">
+          <img src="/images/potion.png" alt="" width="20px" height="20px" style="margin-right: .2rem;">
+          <span style="color: #FFF;">NODEBUFF</span>
+        </div>
+        
+        <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column">
+          
+          <p style="color: #FFF; margin: 0;"><%=nd_elo%> ELO</p>
+           
+        </div>
+        <!-- <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column">
+          
+          <p style="color: #FFF; margin: 0;">Wins</p>
+           
+        </div> -->
+      </div>
+    </div>
+
 
 
     <!-- FOOTER -->
-    <!-- <footer class="container-fluid" style="padding: 0;">
+    <footer class="container-fluid" style="padding: 0;">
         <div class="mineral-footer d-flex flex-column justify-content-center align-items-center">
           <div class="container" style="width: auto;">
             <div class="row">
@@ -224,7 +256,7 @@
           </div>
         </div>
       </footer>
-    </div> -->
+    </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

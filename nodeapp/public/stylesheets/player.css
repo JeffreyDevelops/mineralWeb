@@ -156,6 +156,14 @@
     margin-top: .5rem;
     border-radius: 0.3rem;
 }
+
+#player_elo {
+  background-image: url(../images/home-bg.png);
+  width: 60%;
+  height: 10rem;
+  border-radius: 2rem;
+  background-size: cover;
+}
   
   /* === MINERAL FOOTER === */
   .mineral-footer {

@@ -39,17 +39,34 @@ let db=require('../database');
   global.row_nod;
   global.nod_array = [];
   global.nod_elo_array = [];
+  global.gametypes = [];
   Object.keys(nod_data).forEach(function(key) {
     row_nod = nod_data[key];
     nod_array.push(row_nod.PLAYER);
     nod_elo_array.push(row_nod.ELO);
+  });
 
+  sql = `SELECT PlAYER, ELO, GAMETYPE FROM leaderboard ORDER BY ELO DESC`;
+  db.query(sql, function (err, gametype_data, fields) {
+  global.gametypes = [];
+  global.gametypes_player = [];
+  global.gametypes_elo = [];
+  Object.keys(gametype_data).forEach(function(key) {
+    row_gametype = gametype_data[key];
+    gametypes.push(row_gametype.GAMETYPE);
+    gametypes_player.push(row_gametype.PLAYER);
+    gametypes_elo.push(row_gametype.ELO);
   });
 
   
 
-    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, row_rank, rank_array, row_nod, nod_array, nod_elo_array});  
-});    
+  
+
+  let final_gametypes = [...new Set(gametypes)];
+
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, row_rank, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo});  
+}); 
+});   
 });
 });
 }); 

@@ -39,32 +39,30 @@ let db=require('../database');
   global.row_nod;
   global.nod_array = [];
   global.nod_elo_array = [];
-  global.gametypes = [];
   Object.keys(nod_data).forEach(function(key) {
     row_nod = nod_data[key];
     nod_array.push(row_nod.PLAYER);
     nod_elo_array.push(row_nod.ELO);
   });
 
-  sql = `SELECT PlAYER, ELO, GAMETYPE FROM leaderboard ORDER BY ELO DESC`;
+  sql = `SELECT GAMETYPE, PLAYER, ELO FROM leaderboard ORDER BY PLAYER DESC, ELO DESC;`;
   db.query(sql, function (err, gametype_data, fields) {
   global.gametypes = [];
   global.gametypes_player = [];
   global.gametypes_elo = [];
+  global.gametypes_gamemodes = [];
   Object.keys(gametype_data).forEach(function(key) {
     row_gametype = gametype_data[key];
-    gametypes.push(row_gametype.GAMETYPE);
-    gametypes_player.push(row_gametype.PLAYER);
-    gametypes_elo.push(row_gametype.ELO);
+    gametypes_gamemodes.push(row_gametype.GAMETYPE);
+    gametypes.push(row_gametype.GAMETYPE, row_gametype.PLAYER, row_gametype.ELO);
+    gametypes_player.push(row_gametype.PLAYER, row_gametype.ELO);
+    gametypes_elo.push(row_gametype.GAMETYPE, row_gametype.PLAYER, row_gametype.ELO);
   });
 
   
+  let final_gametypes = [...new Set(gametypes_gamemodes)];
 
-  
-
-  let final_gametypes = [...new Set(gametypes)];
-
-    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, row_rank, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo});  
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, row_rank, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo, });  
 }); 
 });   
 });

@@ -198,24 +198,24 @@
         
     <% }); %>
 
-    <% let ndindex = gametypes_elo.indexOf(result_nd); %>
-    <% let nd_tag = gametypes_elo[ndindex + 1]; %>
-    <% let nd_goal = gametypes_elo[ndindex]; %>
-    <% let nd_elo = gametypes_elo[ndindex + 1]; %>
-      <% console.log(result_nd); %>
-      <% console.log(nd_elo); %>
- 
+
+    <% let i = 1; %>
+    <% const nd_2 = JSON.stringify(gametypes);%>
+    <% let ndindex = gametypes.indexOf(result_nd); %>
+    <% console.log(ndindex); %>
+    <% let elo = gametypes[ndindex + 1]; %>
+    <% console.log(result_nd) %>
+
     <div style="margin-top: 2rem; margin-bottom: 2rem; gap: 2rem;" class="d-flex flex-column justify-content-center align-items-center">
       <% allGametypes.forEach(function(final_gametypes) {%>
-        <% let i = 1; %>
       <div id="player_elo" class="d-flex justify-content-center align-items-center flex-column" style="gap: 1rem;">
         <div class="d-flex flex-row justify-content-center">
           <img src="/images/potion.png" alt="" width="20px" height="20px" style="margin-right: .2rem;">
           <span style="color: #FFF;"><%=final_gametypes%></span>
         </div>
-        <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column"> 
-          <p style="color: #FFF; margin: 0;"><%=nd_elo%> ELO</p>
-          
+        <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column">
+         
+          <p style="color: #FFF; margin: 0;"><%=elo%> ELO</p> 
         </div>
       </div>
       <% }) %>

@@ -202,10 +202,9 @@
     <% let i = 0; %>
     <% const nd_2 = JSON.stringify(gametypes);%>
     <% let ndindex = gametypes_player.indexOf(result_nd); %>
-    <% console.log(gametypes_player) %>
-    <% console.log(gametypes) %>
     
-
+    <% console.log(ndindex) %>
+    <% console.log(gametypes) %>
 
     <div style="margin-top: 2rem; margin-bottom: 2rem; gap: 2rem;" class="d-flex flex-column justify-content-center align-items-center">
       <% allGametypes.forEach(function(final_gametypes) {%>
@@ -216,7 +215,6 @@
         </div>
         <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column">
           <% let elo = gametypes[ndindex + i++]; %>
-          
           <p style="color: #FFF; margin: 0;"><%=elo%> ELO</p> 
         </div>
       </div>

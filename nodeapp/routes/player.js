@@ -45,7 +45,7 @@ let db=require('../database');
     nod_elo_array.push(row_nod.ELO);
   });
 
-  sql = `SELECT GAMETYPE, PLAYER, ELO FROM leaderboard ORDER BY PLAYER DESC, ELO DESC;`;
+  sql = `SELECT GAMETYPE, PLAYER, ELO FROM leaderboard ORDER BY PLAYER DESC;`;
   db.query(sql, function (err, gametype_data, fields) {
   global.gametypes = [];
   global.gametypes_player = [];
@@ -62,7 +62,7 @@ let db=require('../database');
   
   let final_gametypes = [...new Set(gametypes_gamemodes)];
 
-    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo, });  
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo});  
 }); 
 });   
 });

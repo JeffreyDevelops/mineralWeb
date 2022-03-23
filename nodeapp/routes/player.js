@@ -54,15 +54,15 @@ let db=require('../database');
   Object.keys(gametype_data).forEach(function(key) {
     row_gametype = gametype_data[key];
     gametypes_gamemodes.push(row_gametype.GAMETYPE);
-    gametypes.push(row_gametype.GAMETYPE, row_gametype.PLAYER, row_gametype.ELO);
-    gametypes_player.push(row_gametype.PLAYER, row_gametype.ELO);
+    gametypes.push(row_gametype.ELO);
+    gametypes_player.push(row_gametype.PLAYER);
     gametypes_elo.push(row_gametype.GAMETYPE, row_gametype.PLAYER, row_gametype.ELO);
   });
 
   
   let final_gametypes = [...new Set(gametypes_gamemodes)];
 
-    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, row_rank, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo, });  
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo, });  
 }); 
 });   
 });

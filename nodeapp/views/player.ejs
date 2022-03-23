@@ -209,10 +209,7 @@
     <div style="margin-top: 2rem; margin-bottom: 2rem; gap: 2rem;" class="d-flex flex-column justify-content-center align-items-center">
       <% allGametypes.forEach(function(final_gametypes) {%>
       <div id="player_elo" class="d-flex justify-content-center align-items-center flex-column" style="gap: 1rem;">
-        <div class="d-flex flex-row justify-content-center">
-          <img src="/images/potion.png" alt="" width="20px" height="20px" style="margin-right: .2rem;">
-          <span style="color: #FFF;"><%=final_gametypes%></span>
-        </div>
+          <span style="color: #FFF; letter-spacing: .3rem; font-weight: bold;"><%=final_gametypes%></span>  
         <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column">
           <% let elo = gametypes[ndindex + i++]; %>
           <p style="color: #FFF; margin: 0;"><%=elo%> ELO</p> 

@@ -109,8 +109,8 @@
         
 
     <!-- PLAYER INFORMATION -->
-    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 2rem;">
-        <img style="width: 22%; min-width: 200px; height: auto;" src="<%=`https://visage.surgeplay.com/full/${skin_of_player}`%>" alt="">
+    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 4rem;">
+        <img style="width: 22%; min-width: 200px; height: auto; max-width: 250px;" src="<%=`https://visage.surgeplay.com/full/${skin_of_player}`%>" alt="">
         <h1 class="header-target" style="color: rgba(255, 255, 255, 0.795); font-weight: bold; margin-top: .5rem;"><%=result%></h1>
         
         <%const ra_array = rank_array%>
@@ -203,10 +203,7 @@
     <% const nd_2 = JSON.stringify(gametypes);%>
     <% let ndindex = gametypes_player.indexOf(result_nd); %>
     
-    <% console.log(ndindex) %>
-    <% console.log(gametypes) %>
-
-    <div style="margin-top: 2rem; margin-bottom: 2rem; gap: 2rem;" class="d-flex flex-column justify-content-center align-items-center">
+    <div style="margin-top: 4rem; margin-bottom: 2rem; gap: 2rem; flex-wrap: wrap;" class="d-flex justify-content-center align-items-center">
       <% allGametypes.forEach(function(final_gametypes) {%>
       <div id="player_elo" class="d-flex justify-content-center align-items-center flex-column" style="gap: 1rem;">
           <span style="color: #FFF; letter-spacing: .3rem; font-weight: bold;"><%=final_gametypes%></span>  

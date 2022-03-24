@@ -109,10 +109,26 @@
         
 
     <!-- PLAYER INFORMATION -->
-    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 4rem;">
-        <img style="width: 22%; min-width: 200px; height: auto; max-width: 250px;" src="<%=`https://visage.surgeplay.com/full/${skin_of_player}`%>" alt="">
-        <h1 class="header-target" style="color: rgba(255, 255, 255, 0.795); font-weight: bold; margin-top: .5rem;"><%=result%></h1>
-        
+    <div class="player_information-container d-flex flex-row justify-content-center align-items-center" style="margin-top: 4rem;">
+      <div>
+        <img style="width: 22%; min-width: 200px; height: auto; max-width: 250px; position: relative; left: 0.5rem;" src="<%=`https://visage.surgeplay.com/full/${skin_of_player}`%>" alt="">
+        <h1 class="header-target" style="color: rgba(255, 255, 255, 0.795); font-weight: bold; margin-top: .5rem; margin-bottom: 1rem; text-align: center;"><%=result%></h1>
+      </div>
+      <div class="d-flex flex-column" style="position: relative; top: 7rem; display: none;">
+      <div class="player_info d-flex flex-column" style="margin-top: 5rem; display: none; position: relative; bottom: 11rem;">
+        <h1 class="glow last_seen_text" style="display:none; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">LAST</span> SEEN:</h1>
+      </div>
+      <div class="player_info d-flex flex-column" style="margin-top: 2rem; display: none; position: relative; bottom: 11rem;">
+        <h1 class="glow last_seen_text" style="display:none; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">First </span> Joined:</h1>
+      </div>
+      <div class="player_info d-flex flex-column" style="margin-top: 2rem; display: none; position: relative; bottom: 11rem;">
+        <h1 class="glow last_seen_text" style="display:none; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">LAST</span> SEEN:</h1>
+      </div>
+      <div class="player_info d-flex flex-column" style="margin-top: 2rem; display: none; position: relative; bottom: 11rem;">
+        <h1 class="glow last_seen_text" style="display:none; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">LAST</span> SEEN:</h1>
+      </div> 
+    </div>
+      
         <%const ra_array = rank_array%>
         <%let pa_name = parameter%>
         <% const result_rank = ra_array.find(element => { %>
@@ -188,8 +204,8 @@
             </script>
           <% 
          } %>
+         
     </div>
-
     
     <%const nd_a = gametypes_player%>
         <%let parand_name = parameter%>

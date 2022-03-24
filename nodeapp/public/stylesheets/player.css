@@ -177,13 +177,10 @@
   }
   
   /* === MEDIA QUERIES === */
-  @media (max-width: 424px) {
+  @media (max-width: 425px) {
     .staff-title {
       font-size: 2.3rem!important;
     }
-  }
-
-  @media (max-width: 400px) {
     .mineral-foot-links {
       display: none!important;
     }
@@ -191,6 +188,7 @@
       font-size: 2rem!important;
     }
   }
+
   
   @media (min-width: 576px) {
     .mineral-logo {

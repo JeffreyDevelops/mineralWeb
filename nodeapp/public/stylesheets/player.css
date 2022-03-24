@@ -278,8 +278,9 @@
       gap: 10rem;
     }
     .player_info {
-      display: inline-block!important;
+      display: flex!important;
       background-color: #111216;
+      align-items: flex-start;
       background-size: cover;
       text-align: center;
       padding: 1rem 10rem 1rem 1rem;

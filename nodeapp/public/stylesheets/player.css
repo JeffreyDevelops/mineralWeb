@@ -155,10 +155,10 @@
 #player_elo {
   background-image: url(../images/home-bg.png);
   width: 60%;
-  height: 10rem;
+  height: 14rem;
   min-width: 273px;
   max-width: 550px;
-  border-radius: 2rem;
+  border-radius: 0.3rem;
   background-size: cover;
 }
   

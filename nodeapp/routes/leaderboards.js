@@ -12,12 +12,6 @@ router.get('/', async function(req, res, next) {
       row = data[key];
       push_player.push(row.PLAYER, row.UUID);
       });
-      global.top_1_name = push_player[0];
-      global.top_1 = push_player[1];
-      global.top_2_name = push_player[2];  
-      global.top_2 = push_player[3];
-      global.top_3_name = push_player[4];  
-      global.top_3 = push_player[5];
 
       
       sql='SELECT PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
@@ -29,8 +23,20 @@ router.get('/', async function(req, res, next) {
           ee = p_data[key];
           pp.push(ee.PLAYER);
           });
+
+        sql = `SELECT GAMETYPE, PLAYER, ELO FROM leaderboard ORDER BY PLAYER DESC;`;
+        db.query(sql, function (err, gametype_data, fields) {
+
+          global.gametypes_gamemodes = [];
+
+          Object.keys(gametype_data).forEach(function(key) {
+            row_gametype = gametype_data[key];
+            gametypes_gamemodes.push(row_gametype.GAMETYPE);
+          });
+          let final_gametypes = [...new Set(gametypes_gamemodes)];
           
-      res.render('leaderboards', {userData: data, p_data, push_player, resultArray, pp, ee, row, top_1, top_1_name, top_2, top_2_name, top_3, top_3_name});
+      res.render('leaderboards', {userData: data, p_data, push_player, resultArray, pp, ee, row, allGametypes: final_gametypes});
+});      
 });
 });
 });

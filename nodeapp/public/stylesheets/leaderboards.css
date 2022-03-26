@@ -90,6 +90,16 @@
 .player_names:hover {
   color: #FFF!important;
 }
+
+/* === LEADERBOARDS === */
+
+caption { 
+  display: table-caption;
+  text-align: center;
+  color: rgba(255,255,255,.55);
+  caption-side: top;
+  font-size: 2rem;
+}
   
   /* === MINERAL FOOTER === */
   .mineral-footer {

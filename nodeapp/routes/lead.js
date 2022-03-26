@@ -39,7 +39,7 @@ router.get('/', function(req, res, next) {
     if(endingLink < (page + 4)) {
       iterator -= (page + 4) - numberofPages;
     }
-    res.render('leaderboard', {userData: data, page, iterator, endingLink, numberofPages});   
+    res.render('lead', {userData: data, page, iterator, endingLink, numberofPages});   
   });
    
 });

@@ -82,7 +82,7 @@
       </div>
 
       <!-- Leaderboards -->
-
+     
       <div class="d-flex justify-content-center" style="flex-wrap: wrap; gap: 6rem; margin-top: 10rem;">
         <% allGametypes.forEach(function(final_gametypes) { %>
 
@@ -101,7 +101,6 @@
               <% let i = 1; %>
               <% userData.forEach(function(data) { %>
               <% userData.length = 10; %>
-              
               <tr>
                   <th style="font-size: 1.2rem;" scope="row"><%=`${i++}#`; %></td>
                     <td style="font-size: 1.2rem;"><img style="margin-right: 1rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${data.UUID}`%>" alt=""><a style="text-decoration: none;" href="http://localhost:3000/player/<%=data.PLAYER%>"><%=data.PLAYER %></a></td>

@@ -101,6 +101,8 @@
               <% let i = 1; %>
               <% let i_2 = 0; %>
               <% let i_3 = 0; %>
+              <% let i_4 = 0; %>
+              <% let i_5 = 0; %>
               
               
               <%let getin = d_gametypes.indexOf(final_gametypes) %>
@@ -112,7 +114,7 @@
                 
               <tr>
                   <th style="font-size: 1.2rem;" scope="row"><%=`${i++}#`; %></td>
-                    <td style="font-size: 1.2rem;"><img style="margin-right: 1rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${push_player_UUID[getin]}`%>" alt=""><a style="text-decoration: none;" href="http://localhost:3000/player/<%=push_player_player[getin]%>"><%=push_player_player[getin + i_3++] %></a></td>
+                    <td style="font-size: 1.2rem;"><img style="margin-right: 1rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${push_player_UUID[getin + i_4++]}`%>" alt=""><a style="text-decoration: none;" href="http://localhost:3000/player/<%=push_player_player[getin + i_5++]%>"><%=push_player_player[getin + i_3++] %></a></td>
                     <td style="font-size: 1.2rem;"><%=push_player_elo[getin + i_2++]%></td>
                   
               </tr>

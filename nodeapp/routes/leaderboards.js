@@ -14,7 +14,7 @@ router.get('/', async function(req, res, next) {
     global.d_gametypes = [];
     Object.keys(data).forEach(async function(key) {
       row = data[key];
-      push_player.push(row.GAMETYPE, row.PLAYER, row.ELO);
+      push_player.push(row.PLAYER, row.UUID);
       push_player_elo.push(row.ELO);
       push_player_player.push(row.PLAYER);
       push_player_UUID.push(row.UUID);

@@ -82,7 +82,10 @@
       </div>
 
       <!-- Leaderboards -->
-     
+      <% console.log(d_gametypes) %>
+      <% console.log(push_player_elo) %>
+      <% console.log(push_player_player) %>
+      <% console.log(push_player_UUID) %>
       <div class="d-flex justify-content-center" style="flex-wrap: wrap; gap: 6rem; margin-top: 10rem;">
         <% allGametypes.forEach(function(final_gametypes) { %>
 
@@ -99,14 +102,24 @@
               </tr>
 
               <% let i = 1; %>
+              <% let i_2 = 0; %>
+              
+              
+              <%let getin = d_gametypes.indexOf(final_gametypes) %>
+              <% console.log(getin); %>
+              
               <% userData.forEach(function(data) { %>
-              <% userData.length = 10; %>
+
+             <% userData.length = 10; %>
+                
               <tr>
                   <th style="font-size: 1.2rem;" scope="row"><%=`${i++}#`; %></td>
-                    <td style="font-size: 1.2rem;"><img style="margin-right: 1rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${data.UUID}`%>" alt=""><a style="text-decoration: none;" href="http://localhost:3000/player/<%=data.PLAYER%>"><%=data.PLAYER %></a></td>
-                  <td style="font-size: 1.2rem;"><%=data.ELO%></td>
+                    <td style="font-size: 1.2rem;"><img style="margin-right: 1rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${push_player_UUID[getin]}`%>" alt=""><a style="text-decoration: none;" href="http://localhost:3000/player/<%=push_player_player[getin]%>"><%=push_player_player[getin] %></a></td>
+                  <td style="font-size: 1.2rem;"><%=push_player_elo[getin + i_2++]%></td>
                   
               </tr>
+
+              
               <% }) %>
           </table>
       </div>

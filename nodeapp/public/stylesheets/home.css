@@ -187,6 +187,11 @@ width: 60rem;
 }
 
 /* === MEDIA QUERIES === */
+@media(max-width: 291px) {
+  .trans-header {
+    text-underline-offset: 0px!important;
+  }
+}
 @media (max-width: 400px) {
   .mineral-foot-links {
     display: none!important;

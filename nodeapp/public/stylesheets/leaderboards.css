@@ -100,6 +100,20 @@ caption {
   caption-side: top;
   font-size: 2rem;
 }
+
+/* === TABLE ===  */
+
+.rank {
+  width: 5rem;
+}
+
+.player {
+width: 15rem;
+}
+
+.elo {
+  width: 5rem;
+}
   
   /* === MINERAL FOOTER === */
   .mineral-footer {

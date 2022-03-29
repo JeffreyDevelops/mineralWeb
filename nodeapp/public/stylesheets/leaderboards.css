@@ -95,10 +95,14 @@
 
 caption { 
   display: table-caption;
+  margin-bottom: 2rem;
   text-align: center;
-  color: rgba(255,255,255,.55);
+  color: white;
   caption-side: top;
-  font-size: 2rem;
+  font-size: min(max(30px, 10vw), 48px);
+  text-decoration: underline;
+  text-decoration-color: #04329b;
+  text-underline-offset: 13px;
 }
 
 /* === TABLE ===  */

@@ -6,9 +6,6 @@ let db=require('../database');
     router.get('/:username', function(req, res, next) {
     let sql='SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
     db.query(sql, function (err, data, fields) {
-    if (err) {
-      global.location = "https://localhost:3000";
-    }
       let parameter = req.params.username;
 
   let resultArray = Object.values(JSON.parse(JSON.stringify(data)));

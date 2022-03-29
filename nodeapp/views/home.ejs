@@ -127,15 +127,15 @@
       <h1 class="top-players-header" style="color: #04329b; text-decoration: underline rgba(255, 255, 255, 0.795); text-underline-offset: 13px; letter-spacing: .6rem; font-weight: bold;"><span style="color: rgba(255, 255, 255, 0.795);">Top</span> Players <span>&#9876;</span></h1>
       <div style="margin-top: 3rem; gap: 4rem;" class="d-flex flex-row top-player-container">
       <div style="text-align: center;" id="top_player_1">
-      <a href="http://localhost:3000/player/<%=top_1_name%>"><img class="skin-size" src="<%=`https://visage.surgeplay.com/bust/200/${top_1}`%>" alt=""></a>
+      <a href="/player/<%=top_1_name%>"><img class="skin-size" src="<%=`https://visage.surgeplay.com/bust/200/${top_1}`%>" alt=""></a>
       <a style="text-decoration: none;" href="/player/<%=top_1_name%>"><p class="top-p" style="text-align: center; margin-top: 2rem; color: #FFD700; font-size: 1.4rem; font-weight: bold;"><%=top_1_name%></p></a>
     </div>
     <div style="text-align: center;" id="top_player_2">
-      <a href="http://localhost:3000/player/<%=top_2_name%>"><img class="skin-size" src="<%=`https://visage.surgeplay.com/bust/200/${top_2}`%>" alt=""></a>
+      <a href="/player/<%=top_2_name%>"><img class="skin-size" src="<%=`https://visage.surgeplay.com/bust/200/${top_2}`%>" alt=""></a>
       <a style="text-decoration: none;" href="/player/<%=top_2_name%>"><p class="top-p" style="text-align: center; margin-top: 2rem; color: silver; font-size: 1.4rem; font-weight: bold;"><%=top_2_name%></p></a>
     </div>
     <div style="text-align: center;" id="top_player_3">
-      <a href="http://localhost:3000/player/<%=top_3_name%>"><img class="skin-size" src="<%=`https://visage.surgeplay.com/bust/200/${top_3}`%>" alt=""></a>
+      <a href="/player/<%=top_3_name%>"><img class="skin-size" src="<%=`https://visage.surgeplay.com/bust/200/${top_3}`%>" alt=""></a>
       <a style="text-decoration: none;" href="/player/<%=top_3_name%>"><p class="top-p" style="text-align: center; margin-top: 2rem; color: #bf8970; font-size: 1.4rem; font-weight: bold;"><%=top_3_name%></p></a>
     </div>
     </div>
@@ -152,7 +152,7 @@
     <%userData.length = 3;%>
     <tr>
         <th style="font-size: 1.4rem;" scope="row"><%=`${i++}#`; %></td>
-        <td style="font-size: 1.4rem;" ><img style="padding-right: 1.5rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${data.UUID}`%>" alt=""><a style="text-decoration: none;" class="top_players_link" href="http://localhost:3000/player/<%=data.PLAYER%>"><%=data.PLAYER %></a></td>
+        <td style="font-size: 1.4rem;" ><img style="padding-right: 1.5rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${data.UUID}`%>" alt=""><a style="text-decoration: none;" class="top_players_link" href="/player/<%=data.PLAYER%>"><%=data.PLAYER %></a></td>
         <td style="font-size: 1.4rem;"><%=data.ELO %></td>
         
     </tr>

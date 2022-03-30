@@ -6,7 +6,7 @@ var logger = require('morgan');
 var router = express.Router();
 let db=require('./database');
 var indexRouter = require('./routes/home');
-var leadRouter = require('./routes/lead');
+var practiceRouter = require('./routes/practice');
 var leaderboardsRouter = require('./routes/leaderboards');
 var playerRouter = require('./routes/player');
 var staffRouter = require('./routes/staff');
@@ -15,7 +15,7 @@ var app = express();
 
 // view engine setup
 app.use('/', indexRouter);
-app.use('/lead', leadRouter);
+app.use('/practice', practiceRouter);
 app.use('/leaderboards', leaderboardsRouter);
 app.use('/player', playerRouter);
 app.use('/staff', staffRouter);

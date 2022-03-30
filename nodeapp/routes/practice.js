@@ -9,9 +9,10 @@ let db=require('../database');
 const resultsPerPage = 15;
 
 /* Leaderboard listening.*/
-router.get('/', function(req, res, next) {
+router.get('/:gametype', function(req, res, next) {
   let sql='SELECT * FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
   db.query(sql, function (err, data, fields) {
+    let parameter = req.params.gametype;
   if (err) {
     global.location = "/lead/?page=1";
   }
@@ -39,7 +40,7 @@ router.get('/', function(req, res, next) {
     if(endingLink < (page + 4)) {
       iterator -= (page + 4) - numberofPages;
     }
-    res.render('lead', {userData: data, page, iterator, endingLink, numberofPages});   
+    res.render('practice', {userData: data, page, iterator, endingLink, numberofPages, parameter});   
   });
    
 });

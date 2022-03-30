@@ -32,7 +32,7 @@
         
         <tr>
             <th style="font-size: 1.4rem;" scope="row"><%=`${i++}#`; %></td>
-            <td style="font-size: 1.4rem;"><img class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${data.UUID}`%>" alt=""><a href="http://localhost:3000/player/<%=data.PLAYER%>"><%=data.PLAYER %></a></td>
+            <td style="font-size: 1.4rem;"><img class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${data.UUID}`%>" alt=""><a href="/player/<%=data.PLAYER%>"><%=data.PLAYER %></a></td>
             <td style="font-size: 1.4rem;"><%=data.ELO %></td>
             
         </tr>
@@ -44,15 +44,15 @@
     <div class="break"></div>
     <!--Display the links to the pages-->
     <div class="pagination">
-    <% if(page > 1) { %> <a href="http://localhost:3000/leaderboard/?page=<%=page-1%>"><</a> <% } %>
+    <% if(page > 1) { %> <a href="/lead/?page=<%=page-1%>"><</a> <% } %>
     <% for(let i = iterator; i <= endingLink; i++) { %>
         <% if(i === page) { %>
-        <a class="selectedLink" href="http://localhost:3000/leaderboard/?page=<%=i%>"><%=i%></a>
+        <a class="selectedLink" href="/lead/?page=<%=i%>"><%=i%></a>
         <% continue; %>
     <% } %>
-        <a href="http://localhost:3000/leaderboard/?page=<%=i%>"><%=i%></a>
+        <a href="/lead/?page=<%=i%>"><%=i%></a>
         <% } %>
-        <% if(page < numberofPages) { %> <a href="http://localhost:3000/leaderboard/?page=<%=page+1%>">></a> <% } %>
+        <% if(page < numberofPages) { %> <a href="/lead/?page=<%=page+1%>">></a> <% } %>
     </div>
 </div>
     <!-- Bootstrap JS -->

@@ -29,7 +29,7 @@ router.get('/:gametype', function(req, res, next) {
   //Determine the SQL LIMIT starting number
   const startingLimit = (page - 1) * resultsPerPage; 
   // Get the releavant number of POSTS for this starting page
-  sql = `SELECT * FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC LIMIT  ${startingLimit}, ${resultsPerPage}`;
+  sql = `SELECT * FROM leaderboard WHERE Gametype="${parameter}" ORDER BY ELO DESC LIMIT  ${startingLimit}, ${resultsPerPage}`;
   db.query(sql, (err, data) =>{
     if (err) {
       global.location = "/lead/?page=1";

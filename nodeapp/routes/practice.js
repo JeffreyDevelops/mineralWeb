@@ -40,9 +40,20 @@ router.get('/:gametype', function(req, res, next) {
     if(endingLink < (page + 4)) {
       iterator -= (page + 4) - numberofPages;
     }
-    res.render('practice', {userData: data, page, iterator, endingLink, numberofPages, parameter});   
+
+    sql='SELECT PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
+    db.query(sql, async function (err, p_data, fields) {
+      let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
+      var ee;
+      var pp = [];
+      Object.keys(p_data).forEach(async function(key) {
+        ee = p_data[key];
+        pp.push(ee.PLAYER);
+        });
+
+    res.render('practice', {userData: data, page, iterator, endingLink, numberofPages, parameter, pp, ee});   
   });
-   
+});  
 });
 });
 

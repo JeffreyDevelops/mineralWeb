@@ -10,9 +10,10 @@ const resultsPerPage = 15;
 
 /* Leaderboard listening.*/
 router.get('/:gametype', function(req, res, next) {
-  let sql='SELECT * FROM leaderboard WHERE Gametype="Sumo" ORDER BY ELO DESC';
+  let parameter = req.params.gametype;
+  let sql=`SELECT * FROM leaderboard WHERE Gametype="${parameter}" ORDER BY ELO DESC`;
   db.query(sql, function (err, data, fields) {
-    let parameter = req.params.gametype;
+    
   if (err) {
     global.location = "notFound";
   }

@@ -116,7 +116,8 @@
     <div class="break"></div>
     <!--Display the links to the pages-->
     <div class="pagination">
-    <% if(page > 1) { %> <a href="/practice/<%=parameter%>/?page=<%=page-1%>"><</a> <% } %>
+      <a href="/practice/<%=parameter%>/?page=1">⮈</a>
+    <% if(page > 1) { %> <a href="/practice/<%=parameter%>/?page=<%=page-1%>"><div style="transform: rotate(180deg);">➩</div></a> <% } %>
     <% for(let i = iterator; i <= endingLink; i++) { %>
         <% if(i === page) { %>
         <a class="selectedLink" href="/practice/<%=parameter%>/?page=<%=i%>"><%=i%></a>
@@ -124,7 +125,8 @@
     <% } %>
         <a href="/practice/<%=parameter%>/?page=<%=i%>"><%=i%></a>
         <% } %>
-        <% if(page < numberofPages) { %> <a href="/practice/<%=parameter%>/?page=<%=page+1%>">></a> <% } %>
+        <% if(page > 1) { %> <a href="/practice/<%=parameter%>/?page=<%=page+1%>">➩</a> <% } %>
+        <a href="/practice/<%=parameter%>/?page=<%=numberofPages%>">➲</a>
     </div>
 </div>
   <!-- FOOTER -->

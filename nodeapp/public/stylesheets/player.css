@@ -94,7 +94,7 @@
 /* === PLAYER INFORMATION */
 .owner-rank {
     background-color: red;
-    padding: 0.5rem 5rem 0.5rem 5rem;
+    padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
@@ -104,7 +104,7 @@
 
 .admin-rank {
     background-color: #dc3545;
-    padding: 0.5rem 5rem 0.5rem 5rem;
+    padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
@@ -114,7 +114,7 @@
 
 .moderator-rank {
     background-color: #0dcaf0;
-    padding: 0.5rem 5rem 0.5rem 5rem;
+    padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
@@ -124,7 +124,7 @@
 
 .chatmod-rank {
     background-color: rgba(255,255,255,.55);
-    padding: 0.5rem 5rem 0.5rem 5rem;
+    padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
@@ -134,7 +134,7 @@
 
 .trial-rank {
     background-color: yellow;
-    padding: 0.5rem 5rem 0.5rem 5rem;
+    padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
     margin-left: auto;

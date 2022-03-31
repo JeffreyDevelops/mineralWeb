@@ -14,7 +14,7 @@ router.get('/', async function(req, res, next) {
           pp.push(ee.PLAYER);
           });
           // Owner
-          sql='SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="Owner" ORDER BY ELO DESC';
+          sql='SELECT PLAYER, UUID FROM ranks WHERE RANK="Owner" ORDER BY VALUE DESC';
           db.query(sql, async function (err, so_data, fields) {
             var s_oe;
             var s_op = [];
@@ -23,7 +23,7 @@ router.get('/', async function(req, res, next) {
             s_op.push(s_oe.PLAYER, s_oe.UUID);
           });
           // Admin
-          sql='SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="Admin" ORDER BY ELO DESC';
+          sql='SELECT PLAYER, UUID FROM ranks WHERE RANK="Admin" ORDER BY VALUE DESC';
           db.query(sql, async function (err, sa_data, fields) {
             var s_ae;
             var s_ap = [];
@@ -33,7 +33,7 @@ router.get('/', async function(req, res, next) {
           });
 
           // Moderator
-          sql='SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="Moderator" ORDER BY ELO DESC';
+          sql='SELECT PLAYER, UUID FROM ranks WHERE RANK="Moderator" ORDER BY VALUE DESC';
           db.query(sql, async function (err, sm_data, fields) {
             var s_me;
             var s_mp = [];
@@ -43,7 +43,7 @@ router.get('/', async function(req, res, next) {
           });
 
           // ChatMod
-          sql='SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="ChatMod" ORDER BY ELO DESC';
+          sql='SELECT PLAYER, UUID FROM ranks WHERE RANK="ChatMod" ORDER BY VALUE DESC';
           db.query(sql, async function (err, scm_data, fields) {
             var s_cme;
             var s_cmp = [];
@@ -53,7 +53,7 @@ router.get('/', async function(req, res, next) {
           });
 
           // Trial
-          sql='SELECT PLAYER, UUID FROM leaderboard WHERE Gametype="Trial" ORDER BY ELO DESC';
+          sql='SELECT PLAYER, UUID FROM ranks WHERE RANK="Trial" ORDER BY VALUE DESC';
           db.query(sql, async function (err, st_data, fields) {
             var s_te;
             var s_tp = [];

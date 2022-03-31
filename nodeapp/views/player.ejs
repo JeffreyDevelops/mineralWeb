@@ -139,8 +139,8 @@
     <% const r_array = JSON.stringify(rank_array);%>
     <% let getindex = rank_array.indexOf(result_rank); %>
     <% let rank_tag = rank_array[getindex + 1]; %>
-    <% let rank_goal = rank_array[getindex + 2]; %>
-
+    <% let rank_goal = rank_array[getindex - 1]; %>
+    <% console.log(result_rank) %>
 
     <% switch (rank_goal)  {
          case "Owner" : %>

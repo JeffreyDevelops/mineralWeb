@@ -21,13 +21,13 @@ let db=require('../database');
     // console.log(push_player);
   });
   
-  sql = `SELECT PLAYER, UUID, GAMETYPE FROM leaderboard WHERE GAMETYPE in ("Owner", "Admin", "Moderator", "ChatMod", "Trial")`;
+  sql = `SELECT RANK, PLAYER, UUID FROM ranks WHERE RANK in ("Owner", "Admin", "Moderator", "ChatMod", "Trial")`;
   db.query(sql, function (err, rank_data, fields) {
   global.row_rank;
   global.rank_array = [];
   Object.keys(rank_data).forEach(function(key) {
     row_rank = rank_data[key];
-    rank_array.push(row_rank.PLAYER, row_rank.UUID, row_rank.GAMETYPE);
+    rank_array.push(row_rank.RANK, row_rank.PLAYER, row_rank.UUID);
     // console.log(push_player);
   });
 

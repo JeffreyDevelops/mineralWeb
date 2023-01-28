@@ -102,8 +102,18 @@
     border-radius: 0.3rem;
 }
 
+.hr-rank {
+    background-color: #ee949d;
+    padding: 0.5rem 6rem 0.5rem 6rem;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5rem;
+    border-radius: 0.3rem;
+}
+
 .admin-rank {
-    background-color: #dc3545;
+    background-color: #eb4c41;
     padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
@@ -113,7 +123,7 @@
 }
 
 .moderator-rank {
-    background-color: #0dcaf0;
+    background-color: rgba(15, 109, 231, 0.55);
     padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
@@ -122,17 +132,7 @@
     border-radius: 0.3rem;
 }
 
-.chatmod-rank {
-    background-color: rgba(255,255,255,.55);
-    padding: 0.5rem 6rem 0.5rem 6rem;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: .5rem;
-    border-radius: 0.3rem;
-}
-
-.trial-rank {
+.trainee-rank {
     background-color: yellow;
     padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;

@@ -21,7 +21,7 @@ let db=require('../database');
     // console.log(push_player);
   });
   
-  sql = `SELECT RANK, PLAYER, UUID FROM ranks WHERE RANK in ("Owner", "Admin", "Moderator", "ChatMod", "Trial")`;
+  sql = `SELECT RANK, PLAYER, UUID FROM ranks WHERE RANK in ("Owner", "HR", "Admin", "Moderator", "Trainee")`;
   db.query(sql, function (err, rank_data, fields) {
   global.row_rank;
   global.rank_array = [];

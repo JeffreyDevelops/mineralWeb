@@ -154,17 +154,28 @@
                 ow_target.insertAdjacentElement("afterend", owner);
             </script>
         <% break;
-         case "Admin" : %>
+         case "HR" : %>
+            <script>
+                // HR rank
+                let hr = document.createElement("span");
+                hr.setAttribute("id", "resp-rank");
+                hr.setAttribute("class", "hr-rank");
+                let hr_target = document.querySelector(".header-target");
+                hr.innerHTML = `<span style="color: #FFF; font-weight: bold;">HR</span></span>`;
+                hr_target.insertAdjacentElement("afterend", hr);
+            </script>
+       <% break;
+        case "Admin" : %>
             <script>
                 // Admin rank
                 let admin = document.createElement("span");
                 admin.setAttribute("id", "resp-rank");
                 admin.setAttribute("class", "admin-rank");
-                let a_target = document.querySelector(".header-target");
+                let ad_target = document.querySelector(".header-target");
                 admin.innerHTML = `<span style="color: #FFF; font-weight: bold;">Admin</span></span>`;
-                a_target.insertAdjacentElement("afterend", admin);
+                ad_target.insertAdjacentElement("afterend", admin);
             </script>
-       <% break;
+        <% break; 
         case "Moderator" : %>
             <script>
                 // Moderator rank
@@ -175,27 +186,16 @@
                 moderator.innerHTML = `<span style="color: #FFF; font-weight: bold;">Moderator</span></span>`;
                 mo_target.insertAdjacentElement("afterend", moderator);
             </script>
-        <% break; 
-        case "ChatMod" : %>
-            <script>
-                // ChatMod rank
-                let chatmod = document.createElement("span");
-                chatmod.setAttribute("id", "resp-rank");
-                chatmod.setAttribute("class", "chatmod-rank");
-                let cm_target = document.querySelector(".header-target");
-                chatmod.innerHTML = `<span style="color: #FFF; font-weight: bold;">ChatMod</span></span>`;
-                cm_target.insertAdjacentElement("afterend", chatmod);
-            </script>
     <% break; 
-     case "Trial" : %>
+     case "Trainee" : %>
             <script>
-                // Trial rank
-                let trial = document.createElement("span");
-                trial.setAttribute("id", "resp-rank");
-                trial.setAttribute("class", "trial-rank");
-                let t_target = document.querySelector(".header-target");
-                trial.innerHTML = `<span style="color: black; font-weight: bold;">Trial</span></span>`;
-                t_target.insertAdjacentElement("afterend", trial);
+                // Trainee rank
+                let trainee = document.createElement("span");
+                trainee.setAttribute("id", "resp-rank");
+                trainee.setAttribute("class", "trainee-rank");
+                let tr_target = document.querySelector(".header-target");
+                tr_target.innerHTML = `<span style="color: black; font-weight: bold;">Trainee</span></span>`;
+                tr_target.insertAdjacentElement("afterend", trainee);
             </script>
         <% break;
          default : %>

@@ -56,15 +56,25 @@ let db=require('../database');
     gametypes_elo.push(row_gametype.GAMETYPE, row_gametype.PLAYER, row_gametype.ELO);
   });
 
-  
   let final_gametypes = [...new Set(gametypes_gamemodes)];
 
-    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo});  
+  sql = `SELECT * FROM leaderboard WHERE PLAYER = '${parameter}'`;
+  db.query(sql, function (err, player_data, fields) {
+  global.get_player_stats = [];
+  Object.keys(player_data).forEach(function(key) {
+    row_gametype = player_data[key];
+    get_player_stats.push(row_gametype.GAMETYPE, row_gametype.PLAYER, row_gametype.ELO);
+  });
+
+  
+ 
+
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo, get_player_stats});  
 }); 
 });   
 });
 });
 }); 
 });
-
+});
 module.exports = router;

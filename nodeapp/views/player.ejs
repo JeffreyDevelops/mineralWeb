@@ -229,16 +229,19 @@
       <div style="background-color: #111216; width: 100%; padding-top: .5rem; padding-bottom: .5rem; margin-bottom: 1rem; margin-top: 1rem;">
         <h1 class="glow" style="text-align: center; color: rgba(255, 255, 255, 0.795); font-weight: bold; margin: 0; font-size: 3rem;">Sta<span style="color: #04329b; font-weight: bold;">ts</span></h1>
       </div>
-      <% allGametypes.forEach(function(final_gametypes) {%>
+      <% for (let s = 0; s < allGametypes.length; s++) {%>
       <div id="player_elo" class="d-flex justify-content-center align-items-center flex-column" style="gap: 1rem;">
-          <span style="font-size: 1.5rem; color: #FFF; letter-spacing: .3rem; font-weight: bold;"><%=final_gametypes%></span>  
+          <span style="font-size: 1.5rem; color: #FFF; letter-spacing: .3rem; font-weight: bold;"><%=allGametypes[s]%></span>  
         <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column">
           <% let elo = gametypes[ndindex + i++]; %>
-          <p style="color: #FFF; margin: 0; font-size: 1.2rem;"><%=elo%> ELO</p> 
+          <% if (get_player_stats.includes(allGametypes[s])) { %>
+            <p style="color: #FFF; margin: 0; font-size: 1.2rem;"><%=elo%> ELO</p> 
+          <% } else { %>
+            <p style="color: #FFF; margin: 0; font-size: 1.2rem;">1000 ELO</p> 
+            <% }%>
         </div>
       </div>
-      <% }) %>
-      
+      <% } %>
     </div>
 
 

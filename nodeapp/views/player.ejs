@@ -234,11 +234,10 @@
           <span style="font-size: 1.5rem; color: #FFF; letter-spacing: .3rem; font-weight: bold;"><%=allGametypes[s]%></span>  
         <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column">
           <% let elo = gametypes[ndindex + i++]; %>
-          <% if (get_player_stats.includes(allGametypes[s])) { %>
-            <p style="color: #FFF; margin: 0; font-size: 1.2rem;"><%=elo%> ELO</p> 
-          <% } else { %>
-            <p style="color: #FFF; margin: 0; font-size: 1.2rem;">1000 ELO</p> 
-            <% }%>
+          <% if (get_player_stats.includes(allGametypes[s]) === false) { %>
+            <% elo = 1000; %>
+          <% } %>
+          <p style="color: #FFF; margin: 0; font-size: 1.2rem;"><%=elo%> ELO</p> 
         </div>
       </div>
       <% } %>

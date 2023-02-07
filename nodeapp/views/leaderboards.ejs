@@ -99,28 +99,25 @@
               </tr>
 
               <% let i = 1; %>
-              <% let i_2 = 0; %>
-              <% let i_3 = 0; %>
-              <% let i_4 = 0; %>
-              <% let i_5 = 0; %>
               
-              
-              <%let getin = d_gametypes.indexOf(final_gametypes) %>
-              
-              
-              <% userData.forEach(function(data) { %>
-
-             <% userData.length = 10; %>
-                
+              <% for (let l = 0; l < leaderboards_data.length; l++) { %>
+            
+               <% while (leaderboards_data[l] === final_gametypes) { %> 
+                <% if (i === 11) { %>
+                  <% break %>
+                <% } %>
               <tr>
                   <th style="font-size: 1.2rem;" scope="row"><%=`${i++}#`; %></td>
-                    <td style="font-size: 1.2rem;"><img style="margin-right: 1rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${push_player_UUID[getin + i_4++]}`%>" alt=""><a style="text-decoration: none;" href="/player/<%=push_player_player[getin + i_5++]%>"><%=push_player_player[getin + i_3++] %></a></td>
-                    <td style="font-size: 1.2rem;"><%=push_player_elo[getin + i_2++]%></td>
-                  
+                    <td style="font-size: 1.2rem;"><img style="margin-right: 1rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${leaderboards_data[2 + l++]}`%>" alt=""><a style="text-decoration: none;" href="/player/<%=leaderboards_data[l++]%>"><%=leaderboards_data[-1 + l++] %></a></td>
+                    <td style="font-size: 1.2rem;"><%=leaderboards_data[l++]%></td>
               </tr>
-
+              <% }  %>
               
-              <% }) %>
+             
+  
+
+            <% } %>
+             
           </table>
           <div class="d-flex justify-content-center" style="margin-top: 2rem; margin-bottom: 0.2rem;">
           <a href="/practice/<%=final_gametypes%>"><button type="button" class="btn btn-dark  btn-lg"><span style="font-weight: bold;">See More...</span></button></a>

@@ -128,9 +128,11 @@
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     .mineral-foot-links {
       display: none!important;
+      padding-right: 0;
+      padding-left: 0;
     }
     .footer-brand {
       font-size: 2rem!important;

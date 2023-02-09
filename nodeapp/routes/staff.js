@@ -16,35 +16,50 @@ router.get('/', async function(req, res, next) {
           // Owner
           sql='SELECT playerName, playerUUID FROM jeezycore WHERE rankName="Owner" ORDER BY rankPriority DESC';
           db.query(sql, async function (err, so_data, fields) {
-             global.s_oe;
+             global.s_owner;
              global.s_op_uuid;
              global.s_op_name_array;
              global.s_op_uuid_array;
              global.result_s_op_name_array;
              global.result_s_op_uuid_array
             Object.keys(so_data).forEach(async function(key) {
-              s_oe = so_data[key];
-              s_op_name_array = s_oe.playerName.replace("[", "").replace("]", "").split(",");
+              s_owner = so_data[key];
+              s_op_name_array = s_owner.playerName.replace("[", "").replace("]", "").split(",");
               result_s_op_name_array = s_op_name_array.join(" ").trim().split(' ').filter(function (el) {
                 return el != "";
               }); 
-              s_op_uuid_array = s_oe.playerUUID.replace("[", "").replace("]", "").split(",");
+              s_op_uuid_array = s_owner.playerUUID.replace("[", "").replace("]", "").split(",");
               result_s_op_uuid_array = s_op_uuid_array.join(" ").trim().split(' ').filter(function (el) {
                 return el != "";
               }); 
           });
           
-          // Admin
-          sql='SELECT playerName, playerUUID FROM jeezycore WHERE rankName="HR" ORDER BY rankPriority DESC';
-          db.query(sql, async function (err, sa_data, fields) {
-            var s_ae;
-            var s_ap = [];
-            Object.keys(sa_data).forEach(async function(key) {
-            s_ae = sa_data[key];
-            s_ap.push(s_ae.PLAYER, s_ae.UUID);
-          });
-
           // HR
+          sql='SELECT playerName, playerUUID FROM jeezycore WHERE rankName="HR" ORDER BY rankPriority DESC';
+          db.query(sql, async function (err, hr_data, fields) {
+            global.s_hr;
+            global.s_hr_uuid;
+            global.s_hr_name_array;
+            global.s_hr_uuid_array;
+            global.result_s_hr_name_array;
+            global.result_s_hr_uuid_array
+           Object.keys(hr_data).forEach(async function(key) {
+            try {
+              s_hr = hr_data[key];
+              s_hr_name_array = s_hr.playerName.replace("[", "").replace("]", "").split(",");
+              result_s_hr_name_array = s_hr_name_array.join(" ").trim().split(' ').filter(function (el) {
+                return el != "";
+              }); 
+              s_hr_uuid_array = s_hr.playerUUID.replace("[", "").replace("]", "").split(",");
+              result_s_hr_uuid_array = s_hr_uuid_array.join(" ").trim().split(' ').filter(function (el) {
+                return el != "";
+              }); 
+            } catch {
+
+            }
+            
+            });
+          // Admin
           sql='SELECT playerName, playerUUID FROM jeezycore WHERE rankName="Admin" ORDER BY rankPriority DESC';
           db.query(sql, async function (err, sm_data, fields) {
             var s_me;
@@ -71,11 +86,11 @@ router.get('/', async function(req, res, next) {
             var s_tp = [];
             Object.keys(st_data).forEach(async function(key) {
             s_te = st_data[key];
-            s_ap.push(s_te.PLAYER, s_te.UUID);
+            s_tp.push(s_te.PLAYER, s_te.UUID);
           });
           
-
-    res.render('staff', {pp, ee, p_data,soUser: so_data, s_oe, result_s_op_name_array, result_s_op_uuid_array, saUser: sa_data, s_ae, s_ap, smUser: sm_data, s_me, s_mp, 
+        
+    res.render('staff', {pp, ee, p_data,soUser: so_data, result_s_op_name_array, result_s_op_uuid_array, result_s_hr_name_array, result_s_hr_uuid_array, smUser: sm_data, s_me, s_mp, 
       scmUser: scm_data, s_cme, s_cmp, stUser: st_data, s_te, s_tp});
 });
 });

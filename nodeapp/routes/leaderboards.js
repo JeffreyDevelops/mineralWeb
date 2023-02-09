@@ -23,8 +23,6 @@ router.get('/', async function(req, res, next) {
       leaderboards_data.push(row.GAMETYPE, row.PLAYER, row.UUID, row.ELO);
       });
 
-      console.log(leaderboards_data);
-      
       sql='SELECT PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
       db.query(sql, async function (err, p_data, fields) {
         let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));

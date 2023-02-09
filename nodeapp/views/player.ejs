@@ -112,20 +112,25 @@
       </div>
       <div id="about-player" class=" d-flex flex-column" style="position: relative; top: 7rem; display: none;">
       <div class="player_info" style="margin-top: 5rem; position: relative; bottom: 11rem;">
-        <h1 class="glow last_seen_text" style="color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">LAST</span> SEEN:</h1>
+        <%if (online_status === 1) { %>
+          <script>
+             // if online
+             const element = document.querySelector(".player_info");
+             element.innerHTML = `<h1 style="color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">LAST</span> <span class="glow last_seen_text">SEEN:</span><span style="color:green"> ONLINE</span></h1>`
+          </script>
+         <% } else { %>
+          <script>
+            const element = document.querySelector(".player_info");
+            element.innerHTML = `<h1 style="color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">LAST</span> <span class="glow last_seen_text">SEEN:</span><span style="color:red"> <%=final_lastSeen%></span></h1>`
+          </script>
+        <%  } %>
+
       </div>
       <div class="player_info" style="margin-top: 2rem; position: relative; bottom: 11rem;">
-        <h1 class="glow last_seen_text" style="color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">FIRST</span> JOINED:</h1>
+        <h1 style="color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">FIRST</span> <span class="glow last_seen_text">JOINED:</span> <span style="color: gray;"><%=final_firstJoined%></span></h1>
       </div>
-      <!-- <div class="player_info d-flex flex-column" style="margin-top: 2rem; display: none; position: relative; bottom: 11rem;">
-        <h1 class="glow last_seen_text" style="display:none; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">LAST</span> SEEN:</h1>
-      </div>
-      <div class="player_info d-flex flex-column" style="margin-top: 2rem; display: none; position: relative; bottom: 11rem;">
-        <h1 class="glow last_seen_text" style="display:none; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: 1.5rem; margin: 0;"><span class="glow" style="font-size: 1.5rem; color: #04329b; font-weight: bold; text-align: center;">LAST</span> SEEN:</h1>
-      </div>  -->
     </div>
       
- 
 
     <% switch (rank_name)  {
          case "Owner" : %>

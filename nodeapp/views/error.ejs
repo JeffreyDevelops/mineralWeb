@@ -62,9 +62,7 @@
         
         if (search_inp.value !== "") {
           let geti = array.indexOf(match); 
-          console.log(match);
           let right_name = normal_array[geti];
-          console.log(right_name);
           location.href = `/player/${right_name}`;
         } else {
           alert("You need to type a username of your choice!");

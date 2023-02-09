@@ -82,11 +82,7 @@
           <div class="d-flex flex-column align-items-center">
             <div class="d-flex align-items-center justify-content-center flex-wrap" style="gap: 2rem;">
                 <h1 class="glow order-1" style="margin: 0; text-align: center; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: min(max(30px, 10vw), 50px);"><%=result%></h1>
-                <% const testo = JSON.stringify(push_player);%>
-                <% let geti = push_player.indexOf(result); %>
-                <% let skin_of_player = push_player[geti + 1]; %>
-                <% let rank = rank_array[geti + 2]; %>
-                <img class="order-0" src="<%=`https://visage.surgeplay.com/face/70/${skin_of_player}`%>" alt="">
+                <img class="order-0" src="<%=`https://visage.surgeplay.com/face/70/${player_show_skin}`%>" alt="">
         </div>
           
         </div>
@@ -111,7 +107,7 @@
     <!-- PLAYER INFORMATION -->
     <div class="player_information-container d-flex flex-row justify-content-center align-items-center" style="margin-top: 4rem; flex-wrap: wrap;">
       <div>
-        <img class="profile_skin" style="width: 22%; min-width: 246px;; height: auto; max-width: 250px; position: relative;" src="<%=`https://visage.surgeplay.com/full/${skin_of_player}`%>" alt="">
+        <img class="profile_skin" style="width: 22%; min-width: 246px;; height: auto; max-width: 250px; position: relative;" src="<%=`https://visage.surgeplay.com/full/${player_show_skin}`%>" alt="">
         <h1 class="header-target" style="color: rgba(255, 255, 255, 0.795); font-weight: bold; margin-top: .5rem; margin-bottom: 1rem; text-align: center;"><%=result%></h1>
       </div>
       <div id="about-player" class=" d-flex flex-column" style="position: relative; top: 7rem; display: none;">
@@ -129,20 +125,9 @@
       </div>  -->
     </div>
       
-        <%const ra_array = rank_array%>
-        <%let pa_name = parameter%>
-        <% const result_rank = ra_array.find(element => { %>
-        <% return element.toLowerCase() === pa_name.toLowerCase() %>
-        
-    <% }); %>
+ 
 
-    <% const r_array = JSON.stringify(rank_array);%>
-    <% let getindex = rank_array.indexOf(result_rank); %>
-    <% let rank_tag = rank_array[getindex + 1]; %>
-    <% let rank_goal = rank_array[getindex - 1]; %>
-    <% console.log(result_rank) %>
-
-    <% switch (rank_goal)  {
+    <% switch (rank_name)  {
          case "Owner" : %>
             <script>
                 // Owner rank

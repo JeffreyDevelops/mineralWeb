@@ -18,17 +18,24 @@ let db=require('../database');
   Object.keys(data).forEach(function(key) {
     row = data[key];
     push_player.push(row.PLAYER, row.UUID);
-    // console.log(push_player);
   });
   
-  sql = `SELECT RANK, PLAYER, UUID FROM ranks WHERE RANK in ("Owner", "HR", "Admin", "Moderator", "Trainee")`;
+  sql = `SELECT * FROM jeezycore WHERE playerName LIKE '%${parameter}%'`;
   db.query(sql, function (err, rank_data, fields) {
   global.row_rank;
-  global.rank_array = [];
+  global.rank_name = "";
   Object.keys(rank_data).forEach(function(key) {
     row_rank = rank_data[key];
-    rank_array.push(row_rank.RANK, row_rank.PLAYER, row_rank.UUID);
-    // console.log(push_player);
+    rank_name = row_rank.rankName;
+  });
+
+  sql = `SELECT * FROM status WHERE playerName = '${parameter}'`;
+  db.query(sql, function (err, skin_data, fields) {
+  global.row_skin;
+  global.player_show_skin;
+  Object.keys(skin_data).forEach(function(key) {
+    row_skin = skin_data[key];
+    player_show_skin = row_skin.playerUUID;
   });
 
   sql = `SELECT PLAYER, ELO, GAMETYPE FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC`;
@@ -66,15 +73,13 @@ let db=require('../database');
     get_player_stats.push(row_gametype.GAMETYPE, row_gametype.PLAYER, row_gametype.ELO);
   });
 
-  
- 
-
-    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, rank_array, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo, get_player_stats});  
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, rank_name, player_show_skin, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo, get_player_stats});  
 }); 
 });   
 });
 });
 }); 
+});
 });
 });
 module.exports = router;

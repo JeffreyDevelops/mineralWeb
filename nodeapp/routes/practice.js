@@ -12,8 +12,8 @@ const resultsPerPage = 15;
 router.get('/:gametype', function(req, res, next) {
   let parameter = req.params.gametype;
 
-  let sql=`SELECT GAMETYPE FROM leaderboard ORDER BY ELO DESC`;
-  db.query(sql, function (err, gametype_data, fields) {
+  db.query(sql='SELECT `GAMETYPE` FROM `leaderboard` ORDER BY `ELO` DESC;',
+  async function (err, gametype_data, fields) {
     let gametypes_array = [];
     let gametypes;
     Object.keys(gametype_data).forEach(function(key) {
@@ -25,9 +25,9 @@ router.get('/:gametype', function(req, res, next) {
     global.location = "notFound";
   }
 
- 
-  let sql=`SELECT * FROM leaderboard WHERE Gametype="${parameter}" ORDER BY ELO DESC`;
-  db.query(sql, function (err, data, fields) {
+  db.query('SELECT * FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
+  [parameter],
+  async function (err, data, fields) {
     
   if (err) {
     global.location = "notFound";
@@ -45,8 +45,10 @@ router.get('/:gametype', function(req, res, next) {
   //Determine the SQL LIMIT starting number
   const startingLimit = (page - 1) * resultsPerPage; 
   // Get the releavant number of POSTS for this starting page
-  sql = `SELECT * FROM leaderboard WHERE Gametype="${parameter}" ORDER BY ELO DESC LIMIT  ${startingLimit}, ${resultsPerPage}`;
-  db.query(sql, (err, data) =>{
+
+  db.query('SELECT * FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC LIMIT ?, ?;',
+  [parameter, startingLimit, resultsPerPage],
+  async function (err, data) {
     if (err) {
       global.location = "notFound";
     } 
@@ -57,8 +59,9 @@ router.get('/:gametype', function(req, res, next) {
       iterator -= (page) - numberofPages;
     }
 
-    sql='SELECT PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
-    db.query(sql, async function (err, p_data, fields) {
+    db.query('SELECT `PLAYER` FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
+    ["NoDebuff"],
+    async function (err, p_data, fields) {
       let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
       var ee;
       var pp = [];

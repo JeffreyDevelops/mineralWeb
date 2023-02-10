@@ -4,8 +4,9 @@ let db=require('../database');
 
 /* GET staff page. */
 router.get('/', async function(req, res, next) {
-    let sql='SELECT PLAYER FROM leaderboard WHERE Gametype="NoDebuff" ORDER BY ELO DESC';
-      db.query(sql, async function (err, p_data, fields) {
+      db.query('SELECT `PLAYER` FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;', 
+      ["NoDebuff"],
+      async function (err, p_data, fields) {
         let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
         var ee;
         var pp = [];
@@ -14,8 +15,9 @@ router.get('/', async function(req, res, next) {
           pp.push(ee.PLAYER);
           });
           // Owner
-          sql='SELECT playerName, playerUUID FROM jeezycore WHERE rankName="Owner" ORDER BY rankPriority DESC';
-          db.query(sql, async function (err, so_data, fields) {
+          db.query('SELECT `playerName`, `playerUUID` FROM `jeezycore` WHERE `rankName` = ? ORDER BY `rankPriority` DESC;',
+          ["Owner"],
+          async function (err, so_data, fields) {
              global.s_owner;
              global.s_op_uuid;
              global.s_op_name_array;
@@ -35,8 +37,9 @@ router.get('/', async function(req, res, next) {
           });
           
           // HR
-          sql='SELECT playerName, playerUUID FROM jeezycore WHERE rankName="HR" ORDER BY rankPriority DESC';
-          db.query(sql, async function (err, hr_data, fields) {
+          db.query('SELECT `playerName`, `playerUUID` FROM `jeezycore` WHERE `rankName`= ? ORDER BY `rankPriority` DESC;',
+          ["HR"],
+           async function (err, hr_data, fields) {
             global.s_hr;
             global.s_hr_uuid;
             global.s_hr_name_array;
@@ -60,8 +63,9 @@ router.get('/', async function(req, res, next) {
             
             });
           // Admin
-          sql='SELECT playerName, playerUUID FROM jeezycore WHERE rankName="Admin" ORDER BY rankPriority DESC';
-          db.query(sql, async function (err, sm_data, fields) {
+          db.query('SELECT `playerName`, `playerUUID` FROM `jeezycore` WHERE `rankName` = ? ORDER BY `rankPriority` DESC;', 
+          ["Admin"],
+          async function (err, sm_data, fields) {
             var s_me;
             var s_mp = [];
             Object.keys(sm_data).forEach(async function(key) {
@@ -70,8 +74,9 @@ router.get('/', async function(req, res, next) {
           });
 
           // Moderator
-          sql='SELECT playerName, playerUUID FROM jeezycore WHERE rankName="Mod" ORDER BY rankPriority DESC';
-          db.query(sql, async function (err, scm_data, fields) {
+          db.query('SELECT `playerName`, `playerUUID` FROM `jeezycore` WHERE `rankName` = ? ORDER BY `rankPriority` DESC;',
+          ["Mod"],
+          async function (err, scm_data, fields) {
             var s_cme;
             var s_cmp = [];
             Object.keys(scm_data).forEach(async function(key) {
@@ -80,8 +85,9 @@ router.get('/', async function(req, res, next) {
           });
 
           // Trainee
-          sql='SELECT playerName, playerUUID FROM jeezycore WHERE rankName="Trainee" ORDER BY rankPriority DESC';
-          db.query(sql, async function (err, st_data, fields) {
+          db.query('SELECT `playerName`, `playerUUID` FROM `jeezycore` WHERE `rankName` = ? ORDER BY `rankPriority` DESC;', 
+          ["Trainee"],
+          async function (err, st_data, fields) {
             var s_te;
             var s_tp = [];
             Object.keys(st_data).forEach(async function(key) {

@@ -128,16 +128,20 @@ let db=require('../database');
     }
 
 
+    console.log(daysDifference + ' day/s ' + 
+    hoursDifference + ' hour/s ' + 
+    minutesDifference + ' minute/s ');
+
 
     if (daysDifference > 0) {
       final_lastSeen = daysDifference + ' day/s ago'; 
       
     } 
-     if (hoursDifference > 0) {
+     if (hoursDifference > 0 && daysDifference <= 0) {
       final_lastSeen = hoursDifference + ' hour/s ago'; 
     } 
       
-    if (minutesDifference > 0) {
+    if (minutesDifference > 0 && hoursDifference <= 0) {
       final_lastSeen = minutesDifference + ' minute/s ago ';
     }
     

@@ -11,6 +11,21 @@ const resultsPerPage = 15;
 /* Leaderboard listening.*/
 router.get('/:gametype', function(req, res, next) {
   let parameter = req.params.gametype;
+
+  let sql=`SELECT GAMETYPE FROM leaderboard ORDER BY ELO DESC`;
+  db.query(sql, function (err, gametype_data, fields) {
+    let gametypes_array = [];
+    let gametypes;
+    Object.keys(gametype_data).forEach(function(key) {
+      gametypes = gametype_data[key];
+      gametypes_array.push(gametypes.GAMETYPE);
+    });
+
+  if (err || gametypes_array.includes(parameter) == false) {
+    global.location = "notFound";
+  }
+
+ 
   let sql=`SELECT * FROM leaderboard WHERE Gametype="${parameter}" ORDER BY ELO DESC`;
   db.query(sql, function (err, data, fields) {
     
@@ -54,7 +69,8 @@ router.get('/:gametype', function(req, res, next) {
 
     res.render('practice', {userData: data, page, iterator, endingLink, numberofPages, parameter, pp, ee});   
   });
-});  
+}); 
+}); 
 });
 });
 

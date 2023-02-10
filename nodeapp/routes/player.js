@@ -126,14 +126,19 @@ let db=require('../database');
       final_lastSeen = 'OFFLINE'; 
       return;
     }
-    
 
-    if (daysDifference === 0) {
-      final_lastSeen = hoursDifference + ' hour/s ago'; 
-    } else if (hoursDifference === 0) {
-      final_lastSeen = minutesDifference + ' minute/s ago ';
-    } else {
+
+
+    if (daysDifference > 0) {
       final_lastSeen = daysDifference + ' day/s ago'; 
+      
+    } 
+     if (hoursDifference > 0) {
+      final_lastSeen = hoursDifference + ' hour/s ago'; 
+    } 
+      
+    if (minutesDifference > 0) {
+      final_lastSeen = minutesDifference + ' minute/s ago ';
     }
     
 

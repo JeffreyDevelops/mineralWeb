@@ -93,7 +93,7 @@ canvas {
   font-size: 40px;
   margin: 0;
 }
-.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav {
   color: #04329b!important;
 }
 
@@ -186,6 +186,14 @@ width: 60rem;
   color: #04329b!important;
 }
 
+.nav-link-store {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #0d6efd;
+  text-decoration: none;
+  transition: color .15s
+}
+
 /* === MEDIA QUERIES === */
 @media(max-width: 291px) {
   .trans-header {
@@ -250,6 +258,9 @@ width: 60rem;
 }
 
 @media (max-width: 992px) {
+  .nav-link-store {
+    margin-bottom: 1rem;
+  }
   .footer-brand {
     display: flex!important;
     justify-content: center!important;

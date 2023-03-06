@@ -4,7 +4,7 @@ let db=require('../database');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  db.query('SELECT `PLAYER`, `UUID`, `ELO` FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
+  db.query('SELECT `PLAYER`, `UUID`, `ELO` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
   ['NoDebuff'],
     async function (err, data, fields) {
     global.row;

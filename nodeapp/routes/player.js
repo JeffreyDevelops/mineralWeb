@@ -4,7 +4,7 @@ let db=require('../database');
 
 /* GET player page. */
   router.get('/:username', function(req, res, next) {
-  db.query('SELECT `PLAYER`, `UUID` FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
+  db.query('SELECT `PLAYER`, `UUID` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
   ["NoDebuff"],
   async function (err, data, fields) {
   let parameter = req.params.username;
@@ -40,7 +40,7 @@ let db=require('../database');
     player_show_skin = row_skin.playerUUID;
   });
 
-  db.query('SELECT `PLAYER`, `ELO`, `GAMETYPE` FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
+  db.query('SELECT `PLAYER`, `ELO`, `GAMETYPE` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
   ["NoDebuff"],
   async function (err, nod_data, fields) {
   global.row_nod;
@@ -52,7 +52,7 @@ let db=require('../database');
     nod_elo_array.push(row_nod.ELO);
   });
 
-  db.query('SELECT `GAMETYPE`, `PLAYER`, `ELO` FROM `leaderboard` ORDER BY `PLAYER` DESC;',
+  db.query('SELECT `GAMETYPE`, `PLAYER`, `ELO` FROM `elo` ORDER BY `PLAYER` DESC;',
   async function (err, gametype_data, fields) {
   global.gametypes = [];
   global.gametypes_player = [];
@@ -68,7 +68,7 @@ let db=require('../database');
 
   let final_gametypes = [...new Set(gametypes_gamemodes)];
 
-  db.query('SELECT * FROM `leaderboard` WHERE `PLAYER` = ?;',
+  db.query('SELECT * FROM `elo` WHERE `PLAYER` = ?;',
   [parameter],
   async function (err, player_data, fields) {
   global.get_player_stats = [];

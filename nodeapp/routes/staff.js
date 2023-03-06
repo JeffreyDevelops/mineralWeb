@@ -4,7 +4,7 @@ let db=require('../database');
 
 /* GET staff page. */
 router.get('/', async function(req, res, next) {
-      db.query('SELECT `PLAYER` FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;', 
+      db.query('SELECT `PLAYER` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;', 
       ["NoDebuff"],
       async function (err, p_data, fields) {
         let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));

@@ -12,7 +12,7 @@ const resultsPerPage = 15;
 router.get('/:gametype', function(req, res, next) {
   let parameter = req.params.gametype;
 
-  db.query(sql='SELECT `GAMETYPE` FROM `leaderboard` ORDER BY `ELO` DESC;',
+  db.query(sql='SELECT `GAMETYPE` FROM `elo` ORDER BY `ELO` DESC;',
   async function (err, gametype_data, fields) {
     let gametypes_array = [];
     let gametypes;
@@ -25,7 +25,7 @@ router.get('/:gametype', function(req, res, next) {
     global.location = "notFound";
   }
 
-  db.query('SELECT * FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
+  db.query('SELECT * FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
   [parameter],
   async function (err, data, fields) {
     
@@ -46,7 +46,7 @@ router.get('/:gametype', function(req, res, next) {
   const startingLimit = (page - 1) * resultsPerPage; 
   // Get the releavant number of POSTS for this starting page
 
-  db.query('SELECT * FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC LIMIT ?, ?;',
+  db.query('SELECT * FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC LIMIT ?, ?;',
   [parameter, startingLimit, resultsPerPage],
   async function (err, data) {
     if (err) {
@@ -59,7 +59,7 @@ router.get('/:gametype', function(req, res, next) {
       iterator -= (page) - numberofPages;
     }
 
-    db.query('SELECT `PLAYER` FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
+    db.query('SELECT `PLAYER` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
     ["NoDebuff"],
     async function (err, p_data, fields) {
       let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));

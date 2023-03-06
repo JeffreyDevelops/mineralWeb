@@ -4,7 +4,7 @@ let db=require('../database');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  db.query('SELECT `GAMETYPE`, `PLAYER`, `UUID`, `ELO` FROM `leaderboard` ORDER BY `GAMETYPE` DESC, `ELO` DESC;',
+  db.query('SELECT `GAMETYPE`, `PLAYER`, `UUID`, `ELO` FROM `elo` ORDER BY `GAMETYPE` DESC, `ELO` DESC;',
     async function (err, data, fields) {
     global.row;
     global.push_player_elo = [];
@@ -23,7 +23,7 @@ router.get('/', async function(req, res, next) {
       leaderboards_data.push(row.GAMETYPE, row.PLAYER, row.UUID, row.ELO);
       });
 
-      db.query('SELECT `PLAYER` FROM `leaderboard` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
+      db.query('SELECT `PLAYER` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
       ['NoDebuff'],
         async function (err, p_data, fields) {
         let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
@@ -35,7 +35,7 @@ router.get('/', async function(req, res, next) {
           });
 
        
-        db.query('SELECT `GAMETYPE`, `PLAYER`, `ELO` FROM `leaderboard` ORDER BY `PLAYER` DESC;', 
+        db.query('SELECT `GAMETYPE`, `PLAYER`, `ELO` FROM `elo` ORDER BY `PLAYER` DESC;', 
         async function (err, gametype_data, fields) {
 
           global.gametypes_gamemodes = [];

@@ -120,6 +120,14 @@
   .nav-link:hover {
     color: #04329b!important;
   }
+
+  .nav-link-store {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color .15s
+  }
   
   /* === MEDIA QUERIES === */
   @media (max-width: 424px) {
@@ -186,6 +194,9 @@
   }
   
   @media (max-width: 992px) {
+    .nav-link-store {
+      margin-bottom: 1rem;
+    }
     .footer-brand {
       display: flex!important;
       justify-content: center!important;

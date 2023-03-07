@@ -45,8 +45,9 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  let sql='SELECT PLAYER FROM leaderboard WHERE Gametype="Nodebuff" ORDER BY ELO DESC';
-      db.query(sql, async function (err, p_data, fields) {
+      db.query('SELECT PLAYER FROM `elo` WHERE `Gametype` = ? ORDER BY ELO DESC;',
+      ["NoDebuff"],
+      async function (err, p_data, fields) {
         let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
         var ee;
         var pp = [];

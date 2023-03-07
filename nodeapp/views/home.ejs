@@ -65,6 +65,7 @@
         let right_name = normal_array[geti];
         if (right_name === undefined) {
           location.href = `notFound`;
+          return;
         }
         location.href = `/player/${right_name}`;
       } else {

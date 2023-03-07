@@ -60,12 +60,16 @@
       
             
             if (search_inp.value !== "") {
-              let geti = array.indexOf(match); 
-              let right_name = normal_array[geti];
-              location.href = `/player/${right_name}`;
-            } else {
-              alert("You need to type a username of your choice!");
-            }
+        let geti = array.indexOf(match); 
+        let right_name = normal_array[geti];
+        if (right_name === undefined) {
+          location.href = `notFound`;
+          return;
+        }
+        location.href = `/player/${right_name}`;
+      } else {
+        alert("You need to type a username of your choice!");
+      }
             });
           </script>
 

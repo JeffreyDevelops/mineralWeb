@@ -9,15 +9,20 @@ let db=require('../database');
   async function (err, data, fields) {
   let parameter = req.params.username;
   global.row;
-  global.push_player = [];
- 
   let resultArray = Object.values(JSON.parse(JSON.stringify(data)));
   let PlayerPerPage = 1;  
-  
   Object.keys(data).forEach(function(key) {
     row = data[key];
-    push_player.push(row.PLAYER, row.UUID);
   });
+
+  db.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+  ["NoDebuff"],
+  async function (err, data, fields) {
+    global.push_player = [];
+    Object.keys(data).forEach(function(key) {
+      row = data[key];
+      push_player.push(row.playerName, row.playerUUID);
+    });
   
   
   db.query('SELECT * FROM `jeezycore` WHERE `playerName` LIKE ?;',
@@ -164,6 +169,7 @@ try {
 });
 });
 }); 
+});
 });
 });
 });

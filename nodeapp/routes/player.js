@@ -16,7 +16,6 @@ let db=require('../database');
   });
 
   db.query('SELECT `playerName`, `playerUUID` FROM `status`;',
-  ["NoDebuff"],
   async function (err, data, fields) {
     global.push_player = [];
     Object.keys(data).forEach(function(key) {

@@ -4,16 +4,14 @@ let db=require('../database');
 
 /* GET staff page. */
 router.get('/', async function(req, res, next) {
-      db.query('SELECT `PLAYER` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;', 
-      ["NoDebuff"],
-      async function (err, p_data, fields) {
-        let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
-        var ee;
+      db.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+      async function (err, data, fields) {
         var pp = [];
-        Object.keys(p_data).forEach(async function(key) {
-          ee = p_data[key];
-          pp.push(ee.PLAYER);
-          });
+        Object.keys(data).forEach(function(key) {
+        row = data[key];
+        pp.push(row.playerName);
+    });
+
           // Owner
           db.query('SELECT `playerName`, `playerUUID` FROM `jeezycore` WHERE `rankName` = ? ORDER BY `rankPriority` DESC;',
           ["Owner"],
@@ -96,7 +94,7 @@ router.get('/', async function(req, res, next) {
           });
           
         
-    res.render('staff', {pp, ee, p_data,soUser: so_data, result_s_op_name_array, result_s_op_uuid_array, result_s_hr_name_array, result_s_hr_uuid_array, smUser: sm_data, s_me, s_mp, 
+    res.render('staff', {pp,soUser: so_data, result_s_op_name_array, result_s_op_uuid_array, result_s_hr_name_array, result_s_hr_uuid_array, smUser: sm_data, s_me, s_mp, 
       scmUser: scm_data, s_cme, s_cmp, stUser: st_data, s_te, s_tp});
 });
 });

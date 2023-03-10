@@ -29,21 +29,9 @@ router.get('/', async function(req, res, next) {
         push_player.push(row.playerName, row.playerUUID);
     });
 
-      db.query('SELECT `PLAYER` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
-      ['NoDebuff'],
-        async function (err, p_data, fields) {
-        let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
-        var ee;
-        var pp = [];
-        Object.keys(p_data).forEach(async function(key) {
-          ee = p_data[key];
-          pp.push(ee.PLAYER);
-          });
 
-       
         db.query('SELECT `GAMETYPE`, `PLAYER`, `ELO` FROM `elo` ORDER BY `PLAYER` DESC;', 
         async function (err, gametype_data, fields) {
-
           global.gametypes_gamemodes = [];
 
           Object.keys(gametype_data).forEach(function(key) {
@@ -52,9 +40,8 @@ router.get('/', async function(req, res, next) {
           });
           let final_gametypes = [...new Set(gametypes_gamemodes)];
           
-      res.render('leaderboards', {userData: data, data, p_data, push_player, resultArray, pp, ee, row, allGametypes: final_gametypes, push_player_elo,  push_player_player, push_player_UUID, d_gametypes, leaderboards_data});
+      res.render('leaderboards', {userData: data, data, push_player, row, allGametypes: final_gametypes, push_player_elo,  push_player_player, push_player_UUID, d_gametypes, leaderboards_data});
 });      
-});
 });
 });
 });

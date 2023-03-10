@@ -62,16 +62,22 @@ router.get('/:gametype', function(req, res, next) {
     db.query('SELECT `PLAYER` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
     ["NoDebuff"],
     async function (err, p_data, fields) {
-      let resultArray = Object.values(JSON.parse(JSON.stringify(p_data)));
       var ee;
-      var pp = [];
       Object.keys(p_data).forEach(async function(key) {
         ee = p_data[key];
-        pp.push(ee.PLAYER);
         });
 
-    res.render('practice', {userData: data, page, iterator, endingLink, numberofPages, parameter, pp, ee});   
-  });
+        db.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+        async function (err, player_data, fields) {
+          var pp = [];
+            Object.keys(player_data).forEach(function(key) {
+            row = player_data[key];
+            pp.push(row.playerName);
+        });
+
+    res.render('practice', {userData: data, page, iterator, endingLink, numberofPages, parameter, pp, ee});  
+}); 
+});
 }); 
 }); 
 });

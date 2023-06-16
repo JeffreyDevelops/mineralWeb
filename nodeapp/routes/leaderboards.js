@@ -4,7 +4,7 @@ let db=require('../database');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  db.query('SELECT `GAMETYPE`, `PLAYER`, `UUID`, `ELO` FROM `elo` ORDER BY `GAMETYPE` DESC, `ELO` DESC;',
+  db.conn_practice.query('SELECT `GAMETYPE`, `PLAYER`, `UUID`, `ELO` FROM `elo` ORDER BY `GAMETYPE` DESC, `ELO` DESC;',
     async function (err, data, fields) {
     global.row;
     global.push_player_elo = [];
@@ -21,7 +21,7 @@ router.get('/', async function(req, res, next) {
       leaderboards_data.push(row.GAMETYPE, row.PLAYER, row.UUID, row.ELO);
       });
 
-      db.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+      db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `status`;',
       async function (err, data, fields) {
         global.push_player = [];
         Object.keys(data).forEach(function(key) {
@@ -30,7 +30,7 @@ router.get('/', async function(req, res, next) {
     });
 
 
-        db.query('SELECT `GAMETYPE`, `PLAYER`, `ELO` FROM `elo` ORDER BY `PLAYER` DESC;', 
+        db.conn_practice.query('SELECT `GAMETYPE`, `PLAYER`, `ELO` FROM `elo` ORDER BY `PLAYER` DESC;', 
         async function (err, gametype_data, fields) {
           global.gametypes_gamemodes = [];
 

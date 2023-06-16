@@ -4,7 +4,7 @@ let db=require('../database');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  db.query('SELECT `PLAYER`, `UUID`, `ELO` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
+  db.conn_practice.query('SELECT `PLAYER`, `UUID`, `ELO` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
   ['NoDebuff'],
     async function (err, data, fields) {
     global.row;
@@ -20,7 +20,7 @@ router.get('/', async function(req, res, next) {
       global.top_3_name = push_player[4];  
       global.top_3 = push_player[5];
 
-  db.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+  db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `status`;',
     async function (err, status_data, fields) {
       global.pp = [];
       Object.keys(status_data).forEach(async function(key) {

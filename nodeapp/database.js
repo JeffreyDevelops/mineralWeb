@@ -4,14 +4,14 @@ let conn_practice = mysql.createPool({
   host: get_secret.DB_secret.host, 
   user: get_secret.DB_secret.user,   
   password: get_secret.DB_secret.password,     
-  database: get_secret.DB_secret.database 
+  database: get_secret.DB_secret.database_practice
 }); 
 
 let conn_core = mysql.createPool({
-  host: '172.27.225.159', 
-  user: 'jeffrey',   
-  password: "sUTk8UuY",     
-  database: 'jeezydevelopment' 
+  host: get_secret.DB_secret.host, 
+  user: get_secret.DB_secret.user,   
+  password: get_secret.DB_secret.password,     
+  database: get_secret.DB_secret.database_core 
 }); 
 
 

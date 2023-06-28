@@ -152,6 +152,10 @@ canvas {
   margin-right: auto;
 }
 
+iframe, object, embed {
+  max-width: 100%;
+}
+
 /* === TOP-PLAYERS === */
 
 .skin-size:hover {

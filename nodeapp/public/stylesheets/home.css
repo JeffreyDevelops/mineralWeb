@@ -204,6 +204,20 @@ width: 60rem;
     text-underline-offset: 0px!important;
   }
 }
+
+@media(max-width: 400px) {
+ .kb-header {
+  margin-bottom: 1rem!important;
+ }
+ .trans-header {
+  margin-bottom: 1rem!important;
+ }
+ #iframe-container {
+  margin-bottom: 1rem;
+ }
+}
+
+
 @media (max-width: 450px) {
   .mineral-foot-links {
     display: none!important;
@@ -224,7 +238,7 @@ width: 60rem;
 
 @media (max-width: 576px) {
   .top-p {
-    font-size: 1rem!important;
+    font-size: .6rem !important;
   }
   .show-more-btn {
     margin-top: 2rem;

@@ -21,7 +21,7 @@ router.get('/', async function(req, res, next) {
       leaderboards_data.push(row.GAMETYPE, row.PLAYER, row.UUID, row.ELO);
       });
 
-      db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+      db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players`;',
       async function (err, data, fields) {
         global.push_player = [];
         Object.keys(data).forEach(function(key) {

@@ -67,7 +67,7 @@ router.get('/:gametype', function(req, res, next) {
         ee = p_data[key];
         });
 
-        db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+        db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players`;',
         async function (err, player_data, fields) {
           var pp = [];
             Object.keys(player_data).forEach(function(key) {

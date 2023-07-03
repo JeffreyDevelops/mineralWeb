@@ -15,7 +15,7 @@ let db=require('../database');
     row = data[key];
   });
 
-  db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+  db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players`;',
   async function (err, data, fields) {
     global.push_player = [];
     Object.keys(data).forEach(function(key) {
@@ -34,7 +34,7 @@ let db=require('../database');
     rank_name = row_rank.rankName;
   });
 
-  db.conn_core.query('SELECT * FROM `status` WHERE `playerName` = ?;',
+  db.conn_core.query('SELECT * FROM `players` WHERE `playerName` = ?;',
   [parameter],
   async function (err, skin_data, fields) {
   global.row_skin;
@@ -81,7 +81,7 @@ let db=require('../database');
     get_player_stats.push(row_gametype.GAMETYPE, row_gametype.PLAYER, row_gametype.ELO);
   });
 
-  db.conn_core.query('SELECT * FROM `status` WHERE `playerName` = ?',
+  db.conn_core.query('SELECT * FROM `players` WHERE `playerName` = ?',
   [parameter],
   async function (err, status_data, fields) {
     global.row_status;

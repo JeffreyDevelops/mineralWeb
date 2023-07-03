@@ -4,7 +4,7 @@ let db=require('../database');
 
 /* GET staff page. */
 router.get('/', async function(req, res, next) {
-      db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+      db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players`;',
       async function (err, data, fields) {
         var pp = [];
         Object.keys(data).forEach(function(key) {

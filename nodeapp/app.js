@@ -45,7 +45,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-        db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+        db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players`;',
         async function (err, data, fields) {
           var pp = [];
             Object.keys(data).forEach(function(key) {

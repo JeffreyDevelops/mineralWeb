@@ -20,7 +20,7 @@ router.get('/', async function(req, res, next) {
       global.top_3_name = push_player[4];  
       global.top_3 = push_player[5];
 
-  db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `status`;',
+  db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players`;',
     async function (err, status_data, fields) {
       global.pp = [];
       Object.keys(status_data).forEach(async function(key) {

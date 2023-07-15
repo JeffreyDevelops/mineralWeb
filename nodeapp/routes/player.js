@@ -24,14 +24,14 @@ let db=require('../database');
     });
   
   
-  db.conn_core.query('SELECT * FROM `jeezycore` WHERE `playerName` LIKE ?;',
+  db.conn_core.query('SELECT * FROM `players` WHERE `playerName` LIKE ?;',
   [`%${parameter}%`],
   async function (err, rank_data, fields) {
   global.row_rank;
   global.rank_name = "";
   Object.keys(rank_data).forEach(function(key) {
     row_rank = rank_data[key];
-    rank_name = row_rank.rankName;
+    rank_name = row_rank.rank;
   });
 
   db.conn_core.query('SELECT * FROM `players` WHERE `playerName` = ?;',

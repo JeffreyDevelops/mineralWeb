@@ -13,8 +13,8 @@ router.get('/', async function(req, res, next) {
     });
 
           // Owner
-          db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `jeezycore` WHERE `rankName` = ? ORDER BY `rankPriority` DESC;',
-          ["Owner"],
+          db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players` WHERE `rank` = ?;',
+          ["Founder"],
           async function (err, so_data, fields) {
              global.s_owner;
              global.s_op_uuid;

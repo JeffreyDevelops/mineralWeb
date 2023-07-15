@@ -93,7 +93,7 @@
 
 /* === PLAYER INFORMATION */
 .owner-rank {
-    background-color: red;
+    background-color: #5555FF;
     padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
@@ -103,7 +103,7 @@
 }
 
 .hr-rank {
-    background-color: #ee949d;
+    background-color: #00AAAA;
     padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
@@ -113,7 +113,7 @@
 }
 
 .admin-rank {
-    background-color: #eb4c41;
+    background-color: #FFAA00;
     padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
@@ -123,7 +123,7 @@
 }
 
 .moderator-rank {
-    background-color: rgba(15, 109, 231, 0.55);
+    background-color: #AAAAAA;
     padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;
@@ -133,7 +133,7 @@
 }
 
 .trainee-rank {
-    background-color: yellow;
+    background-color: #555555;
     padding: 0.5rem 6rem 0.5rem 6rem;
     text-align: center;
     margin-right: auto;

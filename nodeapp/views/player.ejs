@@ -137,58 +137,58 @@
       
 
     <% switch (rank_name)  {
-         case "Owner" : %>
+         case "Founder" : %>
             <script>
                 // Owner rank
                 let owner = document.createElement("span");
                 owner.setAttribute("id", "resp-rank");
                 owner.setAttribute("class", "owner-rank");
                 let ow_target = document.querySelector(".header-target");
-                owner.innerHTML = `<span style="color: #FFF; font-weight: bold;">Owner</span></span>`;
+                owner.innerHTML = `<span style="color: #FFF; font-weight: bold;">Founder</span></span>`;
                 ow_target.insertAdjacentElement("afterend", owner);
             </script>
         <% break;
-         case "HR" : %>
+         case "Staff" : %>
             <script>
                 // HR rank
                 let hr = document.createElement("span");
                 hr.setAttribute("id", "resp-rank");
                 hr.setAttribute("class", "hr-rank");
                 let hr_target = document.querySelector(".header-target");
-                hr.innerHTML = `<span style="color: #FFF; font-weight: bold;">HR</span></span>`;
+                hr.innerHTML = `<span style="color: #FFF; font-weight: bold;">Staff</span></span>`;
                 hr_target.insertAdjacentElement("afterend", hr);
             </script>
        <% break;
-        case "Admin" : %>
+        case "Gold" : %>
             <script>
                 // Admin rank
                 let admin = document.createElement("span");
                 admin.setAttribute("id", "resp-rank");
                 admin.setAttribute("class", "admin-rank");
                 let ad_target = document.querySelector(".header-target");
-                admin.innerHTML = `<span style="color: #FFF; font-weight: bold;">Admin</span></span>`;
+                admin.innerHTML = `<span style="color: #FFF; font-weight: bold;">Gold</span></span>`;
                 ad_target.insertAdjacentElement("afterend", admin);
             </script>
         <% break; 
-        case "Moderator" : %>
+        case "Silver" : %>
             <script>
                 // Moderator rank
                 let moderator = document.createElement("span");
                 moderator.setAttribute("id", "resp-rank");
                 moderator.setAttribute("class", "moderator-rank");
                 let mo_target = document.querySelector(".header-target");
-                moderator.innerHTML = `<span style="color: #FFF; font-weight: bold;">Moderator</span></span>`;
+                moderator.innerHTML = `<span style="color: #FFF; font-weight: bold;">Silver</span></span>`;
                 mo_target.insertAdjacentElement("afterend", moderator);
             </script>
     <% break; 
-     case "Trainee" : %>
+     case "Bronze" : %>
             <script>
                 // Trainee rank
                 let trainee = document.createElement("span");
                 trainee.setAttribute("id", "resp-rank");
                 trainee.setAttribute("class", "trainee-rank");
                 let tr_target = document.querySelector(".header-target");
-                tr_target.innerHTML = `<span style="color: black; font-weight: bold;">Trainee</span></span>`;
+                tr_target.innerHTML = `<span style="color: black; font-weight: bold;">Bronze</span></span>`;
                 tr_target.insertAdjacentElement("afterend", trainee);
             </script>
         <% break;

@@ -17,29 +17,20 @@ router.get('/', async function(req, res, next) {
           ["Founder"],
           async function (err, so_data, fields) {
              global.s_owner;
-             global.s_op_uuid;
-             global.s_op_name_array;
-             global.s_op_uuid_array;
-             global.result_s_op_name_array;
-             global.result_s_op_uuid_array
+             global.result_s_op_name_array = [];
+          
             Object.keys(so_data).forEach(async function(key) {
               s_owner = so_data[key];
-              s_op_name_array = s_owner.playerName.replace("[", "").replace("]", "").split(",");
-              result_s_op_name_array = s_op_name_array.join(" ").trim().split(' ').filter(function (el) {
-                return el != "";
-              }); 
-              s_op_uuid_array = s_owner.playerUUID.replace("[", "").replace("]", "").split(",");
-              result_s_op_uuid_array = s_op_uuid_array.join(" ").trim().split(' ').filter(function (el) {
-                return el != "";
-              }); 
+              
+              result_s_op_name_array.push(s_owner.playerName, s_owner.playerUUID);
           });
           
-          
+         console.log(result_s_op_name_array);
         
     res.render('staff', {pp,soUser: so_data, result_s_op_name_array});
 });
 });
-}); 
+});
 
 
 

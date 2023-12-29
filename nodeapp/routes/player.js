@@ -56,7 +56,8 @@ let db=require('../database');
     nod_elo_array.push(row_nod.ELO);
   });
 
-  db.conn_practice.query('SELECT `GAMETYPE`, `PLAYER`, `ELO` FROM `elo` ORDER BY `PLAYER` DESC;',
+  db.conn_practice.query('SELECT `GAMETYPE`, `PLAYER`, `ELO` FROM `elo`  WHERE `PLAYER` = ? ORDER BY `PLAYER` DESC;',
+  [parameter],
   async function (err, gametype_data, fields) {
   global.gametypes = [];
   global.gametypes_player = [];

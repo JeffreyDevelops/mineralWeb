@@ -238,7 +238,7 @@ width: 60rem;
 
 @media (max-width: 576px) {
   .top-p {
-    font-size: .6rem !important;
+    font-size: 1rem !important;
   }
   .show-more-btn {
     margin-top: 2rem;

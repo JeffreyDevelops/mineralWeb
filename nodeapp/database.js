@@ -1,17 +1,17 @@
 let mysql = require('mysql2');
 let get_secret = require('./secrets_DB.json');
 let conn_practice = mysql.createPool({
-  host: get_secret.DB_secret.host, 
-  user: get_secret.DB_secret.user,   
-  password: get_secret.DB_secret.password,     
-  database: get_secret.DB_secret.database_practice
+  host: get_secret.practice.host, 
+  user: get_secret.practice.user,   
+  password: get_secret.practice.password,     
+  database: get_secret.practice.database
 }); 
 
 let conn_core = mysql.createPool({
-  host: get_secret.DB_secret.host, 
-  user: get_secret.DB_secret.user,   
-  password: get_secret.DB_secret.password,     
-  database: get_secret.DB_secret.database_core 
+  host: get_secret.core.host, 
+  user: get_secret.core.user,   
+  password: get_secret.core.password,     
+  database: get_secret.core.database
 }); 
 
 

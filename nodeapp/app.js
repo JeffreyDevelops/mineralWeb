@@ -9,8 +9,7 @@ var indexRouter = require('./routes/home');
 var practiceRouter = require('./routes/practice');
 var leaderboardsRouter = require('./routes/leaderboards');
 var playerRouter = require('./routes/player');
-var staffRouter = require('./routes/staff');
-var verificationRouter = require('./routes/verification');
+var teamRouter = require('./routes/team');
 ;
 var app = express();
 
@@ -19,8 +18,7 @@ app.use('/', indexRouter);
 app.use('/practice', practiceRouter);
 app.use('/leaderboards', leaderboardsRouter);
 app.use('/player', playerRouter);
-app.use('/staff', staffRouter);
-app.use('/verification', verificationRouter);
+app.use('/team', teamRouter);
 
 
 

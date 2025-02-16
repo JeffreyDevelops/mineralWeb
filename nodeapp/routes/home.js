@@ -1,36 +1,108 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-let db=require('../database');
+let db = require("../database");
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
-  db.conn_practice.query('SELECT `PLAYER`, `UUID`, `ELO` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
-  ['NoDebuff'],
-    async function (err, data, fields) {
-    global.row;
-    global.push_player = [];
-    Object.keys(data).forEach(async function(key) {
-      row = data[key];
-      push_player.push(row.PLAYER, row.UUID);
-      });
-      global.top_1_name = push_player[0];
-      global.top_1 = push_player[1];
-      global.top_2_name = push_player[2];  
-      global.top_2 = push_player[3];
-      global.top_3_name = push_player[4];  
-      global.top_3 = push_player[5];
-
-  db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players`;',
+router.get("/", async function (req, res, next) {
+  db.conn_core.query(
+    "SELECT `playerName`, `playerUUID` FROM `players`;",
     async function (err, status_data, fields) {
       global.pp = [];
-      Object.keys(status_data).forEach(async function(key) {
+      Object.keys(status_data).forEach(async function (key) {
         row = status_data[key];
         pp.push(row.playerName);
-        });
-        
-      res.render('home', {userData: data, push_player, pp, row, top_1, top_1_name, top_2, top_2_name, top_3, top_3_name});
-});
-});
+      });
+
+      db.conn_practice.query(
+        "SELECT * FROM `elo` ORDER BY `elo` DESC;",
+        async function (err, gametype_data, fields) {
+          global.gametypes_gamemodes = [];
+
+          Object.keys(gametype_data).forEach(function (key) {
+            row_gametype = gametype_data[key];
+            gametypes_gamemodes.push({
+              gametype: row_gametype.GAMETYPE,
+              players: [],
+            });
+          });
+
+          let leaderboardsData = gametypes_gamemodes.filter(
+            (game, index, self) =>
+              index === self.findIndex((g) => g.gametype === game.gametype)
+          );
+          leaderboardsData.unshift({ gametype: "Global", players: [] });
+
+          await Promise.all(
+            leaderboardsData.map(async (obj) => {
+              if (obj.gametype === "Global") {
+                return new Promise((resolve, reject) => {
+                  db.conn_core.query(
+                    "SELECT * FROM `elo` ORDER BY `elo` DESC ",
+                    (err, so_data) => {
+                      if (err) return reject(err);
+
+                      obj.players = so_data.map((player) => ({
+                        playerName: player.PLAYER,
+                        playerUUID: player.UUID,
+                        elo: player.ELO,
+                      }));
+                      resolve(obj);
+                    }
+                  );
+                });
+              }
+
+              return new Promise((resolve, reject) => {
+                db.conn_core.query(
+                  "SELECT * FROM `elo` WHERE `GAMETYPE` = ? ORDER BY `elo` DESC ",
+                  [obj.gametype],
+                  (err, so_data) => {
+                    if (err) return reject(err);
+
+                    obj.players = so_data.map((player) => ({
+                      playerName: player.PLAYER,
+                      playerUUID: player.UUID,
+                      elo: player.ELO,
+                    }));
+                    resolve(obj);
+                  }
+                );
+              });
+            })
+          );
+
+          const totalGamemodes = 20;
+
+          const result = leaderboardsData[0].players.reduce((acc, curr) => {
+            const existing = acc.find(
+              (item) => item.playerUUID === curr.playerUUID
+            );
+
+            if (existing) {
+              existing.elo += curr.elo;
+              existing.count += 1;
+            } else {
+              acc.push({ ...curr, count: 1 });
+            }
+
+            return acc;
+          }, []);
+
+          result.forEach((player) => {
+            player.elo = Math.round(
+              (player.elo + 1000 * (totalGamemodes - player.count)) / 20
+            );
+          });
+
+          const sortedResult = result.sort((a, b) => b.elo - a.elo);
+
+          leaderboardsData[0].players = sortedResult;
+
+          res.render("home", { pp, leaderboardsData });
+        }
+      );
+    }
+  );
 });
 
 module.exports = router;

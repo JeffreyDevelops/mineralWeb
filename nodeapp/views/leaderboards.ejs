@@ -102,15 +102,18 @@
                   <th class="elo" scope="col">Elo</th>
               </tr>
 
-              <% leaderboards.players.forEach(function(leaderboardsPlayers, index) { %>  
-                <tr>
-                  <th style="font-size: 1.2rem;" scope="row"><%= index + 1 %>#</th>
-                  <td style="font-size: 1.2rem;">
-                    <img style="margin-right: 1rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${leaderboardsPlayers.playerUUID}`%>" alt="">
-                    <a style="text-decoration: none;" href="/player/<%= leaderboardsPlayers.playerName %>"><%= leaderboardsPlayers.playerName %></a>
-                  </td>
-                  <td style="font-size: 1.2rem;"><%= leaderboardsPlayers.elo %></td>
-                </tr>
+              <% leaderboards.players.some(function(leaderboardsPlayers, index) { %>  
+                <% if (index <= 9) {%>
+                  <tr>
+                    <th style="font-size: 1.2rem;" scope="row"><%= index + 1 %>#</th>
+                    <td style="font-size: 1.2rem;">
+                      <img style="margin-right: 1rem;" class="rounded" src="<%=`https://visage.surgeplay.com/face/24/${leaderboardsPlayers.playerUUID}`%>" alt="">
+                      <a style="text-decoration: none;" href="/player/<%= leaderboardsPlayers.playerName %>"><%= leaderboardsPlayers.playerName %></a>
+                    </td>
+                    <td style="font-size: 1.2rem;"><%= leaderboardsPlayers.elo %></td>
+                  </tr>
+                  <% } %>
+               
               <% }) %>
               
               <% for (let i = leaderboards.players.length; i < 10; i++) { %>

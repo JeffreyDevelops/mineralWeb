@@ -86,7 +86,7 @@
           <div class="d-flex flex-column align-items-center">
             <div class="d-flex align-items-center justify-content-center flex-wrap" style="gap: 2rem;">
                 <h1 class="glow order-1" style="margin: 0; text-align: center; color: rgba(255, 255, 255, 0.795); font-weight: bold; font-size: min(max(30px, 10vw), 50px);"><%=result%></h1>
-                <img class="order-0" src="<%=`https://visage.surgeplay.com/face/70/${player_show_skin}`%>" alt="">
+                <img class="order-0" src="<%=`https://visage.surgeplay.com/face/70/${playerAndRankData[0].playerUUID}`%>" alt="">
         </div>
           
         </div>
@@ -111,7 +111,7 @@
     <!-- PLAYER INFORMATION -->
     <div class="player_information-container d-flex flex-row justify-content-center align-items-center" style="margin-top: 4rem; flex-wrap: wrap;">
       <div>
-        <img class="profile_skin" style="width: 22%; min-width: 246px;; height: auto; max-width: 250px; position: relative;" src="<%=`https://visage.surgeplay.com/full/${player_show_skin}`%>" alt="">
+        <img class="profile_skin" style="width: 22%; min-width: 246px;; height: auto; max-width: 250px; position: relative;" src="<%=`https://visage.surgeplay.com/full/${playerAndRankData[0].playerUUID}`%>" alt="">
         <h1 class="header-target" style="color: rgba(255, 255, 255, 0.795); font-weight: bold; margin-top: .5rem; margin-bottom: 1rem; text-align: center;"><%=result%></h1>
       </div>
       <div id="about-player" class=" d-flex flex-column" style="position: relative; top: 7rem; display: none;">
@@ -135,7 +135,7 @@
       </div>
     </div>
       
-<% let rankData = ranks.find(r => r.rankName === rank_name) || { rankName: "Default", rgb: "128, 128, 128" }; %>
+<% let rankData = playerAndRankData.find(r => r.rankName === r.playerRankName) || { rankName: "Default", rgb: "128, 128, 128" }; %>
 <script>
   let rank = document.createElement("span");
   rank.id = "resp-rank"; 
@@ -149,37 +149,26 @@
     
     </div>
     
-    <%const nd_a = gametypes_player%>
-        <%let parand_name = parameter%>
-        <% const result_nd = nd_a.find(element => { %>
-        <% return element.toLowerCase() === parand_name.toLowerCase() %>
-        
-    <% }); %>
-
-
-    <% let i = 0; %>
-    <% const nd_2 = JSON.stringify(gametypes);%>
-    <% let ndindex = gametypes_player.indexOf(result_nd); %>
     
+ 
     <div style="margin-top: 4rem; margin-bottom: 2rem; gap: 2rem; flex-wrap: wrap;" class="d-flex justify-content-center align-items-center">
+      <% if (leaderboardsData.length !== 0) {%>  
       <div style="background-color: #111216; width: 100%; padding-top: .5rem; padding-bottom: .5rem; margin-bottom: 1rem; margin-top: 1rem;">
         <h1 class="glow" style="text-align: center; color: rgba(255, 255, 255, 0.795); font-weight: bold; margin: 0; font-size: 3rem;">Sta<span style="color: #04329b; font-weight: bold;">ts</span></h1>
       </div>
-      <% for (let s = 0; s < allGametypes.length; s++) {%>
-      <div id="player_elo" class="d-flex justify-content-center align-items-center flex-column" style="gap: 1rem;">
-          <span style="font-size: 1.5rem; color: #FFF; letter-spacing: .3rem; font-weight: bold;"><%=allGametypes[s]%></span>  
-        <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column">
-          <% let elo = gametypes[ndindex + i++]; %>
-          <% if (get_player_stats.includes(allGametypes[s]) === false) { %>
-            <% elo = 1000; %>
-          <% } %>
-          <p style="color: #FFF; margin: 0; font-size: 1.2rem;"><%=elo%> ELO</p> 
+      <% leaderboardsData.some(function(stats, index) { %>  
+        <div id="player_elo" class="d-flex justify-content-center align-items-center flex-column" style="gap: 1rem;">
+            <span style="font-size: 1.5rem; color: #FFF; letter-spacing: .3rem; font-weight: bold;"><%=stats.gametype%></span>  
+          <div style="background: rgba(0, 0, 0, .2); border: 1px solid rgba(238, 232, 232, 0.2); border-radius: 6px; width: 80%; text-align: center;" class="d-flex flex-column">
+            <p style="color: #FFF; margin: 0; font-size: 1.2rem;"><%=stats.elo%> ELO</p> 
+          </div>
         </div>
-      </div>
+        <% }) %>
       <% } %>
-    </div>
+      </div>
+  
 
-
+    
 
     <!-- FOOTER -->
     <footer class="container-fluid" style="padding: 0; border-top: 8px solid #04329b;">

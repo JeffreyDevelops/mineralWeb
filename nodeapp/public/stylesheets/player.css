@@ -92,64 +92,13 @@
 }
 
 /* === PLAYER INFORMATION */
-.owner-rank {
-    background-color: #5555FF;
-    padding: 0.5rem 6rem 0.5rem 6rem;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: .5rem;
-    border-radius: 0.3rem;
-}
-
-.hr-rank {
-    background-color: #00AAAA;
-    padding: 0.5rem 6rem 0.5rem 6rem;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: .5rem;
-    border-radius: 0.3rem;
-}
-
-.admin-rank {
-    background-color: #FFAA00;
-    padding: 0.5rem 6rem 0.5rem 6rem;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: .5rem;
-    border-radius: 0.3rem;
-}
-
-.moderator-rank {
-    background-color: #AAAAAA;
-    padding: 0.5rem 6rem 0.5rem 6rem;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: .5rem;
-    border-radius: 0.3rem;
-}
-
-.trainee-rank {
-    background-color: #555555;
-    padding: 0.5rem 6rem 0.5rem 6rem;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: .5rem;
-    border-radius: 0.3rem;
-}
-
-.default-rank {
-    background-color: silver;
-    padding: 0.5rem 6rem 0.5rem 6rem;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: .5rem;
-    border-radius: 0.3rem;
+#resp-rank {
+  padding: 0.5rem 6rem 0.5rem 6rem;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: .5rem;
+  border-radius: 0.3rem;
 }
 
 #player_elo {

@@ -135,76 +135,18 @@
       </div>
     </div>
       
+<% let rankData = ranks.find(r => r.rankName === rank_name) || { rankName: "Default", rgb: "128, 128, 128" }; %>
+<script>
+  let rank = document.createElement("span");
+  rank.id = "resp-rank"; 
+  rank.className = "<%= rankData.rankName.toLowerCase() %>-rank";
+  rank.innerHTML = `<span style="color: #FFF; font-weight: bold;"><%= rankData.rankName %></span>`;
+  rank.style.backgroundColor = "rgb(<%= rankData.rgb %>)"; 
 
-    <% switch (rank_name)  {
-         case "Founder" : %>
-            <script>
-                // Owner rank
-                let owner = document.createElement("span");
-                owner.setAttribute("id", "resp-rank");
-                owner.setAttribute("class", "owner-rank");
-                let ow_target = document.querySelector(".header-target");
-                owner.innerHTML = `<span style="color: #FFF; font-weight: bold;">Founder</span></span>`;
-                ow_target.insertAdjacentElement("afterend", owner);
-            </script>
-        <% break;
-         case "Staff" : %>
-            <script>
-                // HR rank
-                let hr = document.createElement("span");
-                hr.setAttribute("id", "resp-rank");
-                hr.setAttribute("class", "hr-rank");
-                let hr_target = document.querySelector(".header-target");
-                hr.innerHTML = `<span style="color: #FFF; font-weight: bold;">Staff</span></span>`;
-                hr_target.insertAdjacentElement("afterend", hr);
-            </script>
-       <% break;
-        case "Gold" : %>
-            <script>
-                // Admin rank
-                let admin = document.createElement("span");
-                admin.setAttribute("id", "resp-rank");
-                admin.setAttribute("class", "admin-rank");
-                let ad_target = document.querySelector(".header-target");
-                admin.innerHTML = `<span style="color: #FFF; font-weight: bold;">Gold</span></span>`;
-                ad_target.insertAdjacentElement("afterend", admin);
-            </script>
-        <% break; 
-        case "Silver" : %>
-            <script>
-                // Moderator rank
-                let moderator = document.createElement("span");
-                moderator.setAttribute("id", "resp-rank");
-                moderator.setAttribute("class", "moderator-rank");
-                let mo_target = document.querySelector(".header-target");
-                moderator.innerHTML = `<span style="color: #FFF; font-weight: bold;">Silver</span></span>`;
-                mo_target.insertAdjacentElement("afterend", moderator);
-            </script>
-    <% break; 
-     case "Bronze" : %>
-            <script>
-                // Trainee rank
-                let trainee = document.createElement("span");
-                trainee.setAttribute("id", "resp-rank");
-                trainee.setAttribute("class", "trainee-rank");
-                let tr_target = document.querySelector(".header-target");
-                tr_target.innerHTML = `<span style="color: black; font-weight: bold;">Bronze</span></span>`;
-                tr_target.insertAdjacentElement("afterend", trainee);
-            </script>
-        <% break;
-         default : %>
-            <script>
-            // Default rank
-                let default_rank = document.createElement("span");
-                default_rank.setAttribute("id", "resp-rank");
-                default_rank.setAttribute("class", "default-rank");
-                let d_target = document.querySelector(".header-target");
-                default_rank.innerHTML = `<span style="color: black; font-weight: bold;">Default</span></span>`;
-                d_target.insertAdjacentElement("afterend", default_rank);
-            </script>
-          <% 
-         } %>
-         
+  document.querySelector(".header-target")?.insertAdjacentElement("afterend", rank);
+</script>
+
+    
     </div>
     
     <%const nd_a = gametypes_player%>

@@ -22,6 +22,14 @@ let db=require('../database');
       row = data[key];
       push_player.push(row.playerName, row.playerUUID);
     });
+
+    db.conn_core.query('SELECT * FROM `ranks`;',
+    async function (err, data, fields) {
+      global.ranks = [];
+      Object.keys(data).forEach(function(key) {
+        getRanks = data[key];
+        ranks.push({rankName: getRanks.rankName, rgb: getRanks.rankRGB});
+      });
   
   
   db.conn_core.query('SELECT * FROM `players` WHERE `playerName` LIKE ?;',
@@ -163,12 +171,13 @@ try {
 } catch (error) {
 }
  
-    res.render('player', {userData: data, PlayerPerPage, row, push_player, parameter, resultArray, rank_name, player_show_skin, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo, get_player_stats, online_status});  
+    res.render('player', {userData: data, PlayerPerPage, row, push_player, ranks, parameter, resultArray, rank_name, player_show_skin, row_nod, nod_array, nod_elo_array, gametypes, row_gametype, gametypes_player, allGametypes: final_gametypes, gametypes_elo, get_player_stats, online_status});  
 });
 });   
 });
 });
 }); 
+});
 });
 });
 });

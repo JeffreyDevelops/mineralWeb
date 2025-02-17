@@ -1,90 +1,119 @@
-let express = require('express');
+let express = require("express");
 let router = express.Router();
-let db=require('../database');
-// another routes also appear here
-// this script to fetch data from MySQL databse table
+let db = require("../database");
 
+/* GET practice page. */
+router.get("/:gametype/:sites", function (req, res, next) {
+  let parameterGametype = req.params.gametype;
+  let parameterSites = req.params.sites;
 
-// How many post we want to show on each page
-const resultsPerPage = 15;
+  db.conn_core.query(
+    "SELECT `playerName`, `playerUUID` FROM `players`;",
+    async function (err, player_data, fields) {
+      var pp = [];
+      Object.keys(player_data).forEach(function (key) {
+        row = player_data[key];
+        pp.push(row.playerName);
+      });
 
-/* Leaderboard listening.*/
-router.get('/:gametype', function(req, res, next) {
-  let parameter = req.params.gametype;
+      db.conn_practice.query(
+        "SELECT * FROM `elo` ORDER BY `elo` DESC;",
+        async function (err, gametype_data, fields) {
+          global.gametypes_gamemodes = [];
 
-  db.conn_practice.query(sql='SELECT `GAMETYPE` FROM `elo` ORDER BY `ELO` DESC;',
-  async function (err, gametype_data, fields) {
-    let gametypes_array = [];
-    let gametypes;
-    Object.keys(gametype_data).forEach(function(key) {
-      gametypes = gametype_data[key];
-      gametypes_array.push(gametypes.GAMETYPE);
-    });
+          Object.keys(gametype_data).forEach(function (key) {
+            row_gametype = gametype_data[key];
+            gametypes_gamemodes.push({
+              gametype: row_gametype.GAMETYPE,
+              players: [],
+            });
+          });
 
-  if (err || gametypes_array.includes(parameter) == false) {
-    global.location = "notFound";
-  }
+          let leaderboardsData = gametypes_gamemodes.filter(
+            (game, index, self) =>
+              index === self.findIndex((g) => g.gametype === game.gametype)
+          );
+          leaderboardsData.unshift({ gametype: "Global", players: [] });
 
-  db.conn_practice.query('SELECT * FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
-  [parameter],
-  async function (err, data, fields) {
-    
-  if (err) {
-    global.location = "notFound";
-  }
+          await Promise.all(
+            leaderboardsData.map(async (obj) => {
+              if (obj.gametype === "Global") {
+                return new Promise((resolve, reject) => {
+                  db.conn_core.query(
+                    "SELECT * FROM `elo` ORDER BY `elo` DESC ",
+                    (err, so_data) => {
+                      if (err) return reject(err);
 
-  const numOfResults = data.length;
-  const numberofPages = Math.ceil(numOfResults / resultsPerPage);
-  let page = req.query.page ? Number(req.query.page) : 1;
-  if(page > numberofPages) {
-    res.redirect(`practice/${parameter}/?page=`+encodeURIComponent(numberofPages));
-  } else if (page < 1) {
-    global.location = "notFound";
-  }
+                      obj.players = so_data.map((player) => ({
+                        playerName: player.PLAYER,
+                        playerUUID: player.UUID,
+                        elo: player.ELO,
+                      }));
+                      resolve(obj);
+                    }
+                  );
+                });
+              }
 
-  //Determine the SQL LIMIT starting number
-  const startingLimit = (page - 1) * resultsPerPage; 
-  // Get the releavant number of POSTS for this starting page
+              return new Promise((resolve, reject) => {
+                db.conn_core.query(
+                  "SELECT * FROM `elo` WHERE `GAMETYPE` = ? ORDER BY `elo` DESC ",
+                  [obj.gametype],
+                  (err, so_data) => {
+                    if (err) return reject(err);
 
-  db.conn_practice.query('SELECT * FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC LIMIT ?, ?;',
-  [parameter, startingLimit, resultsPerPage],
-  async function (err, data) {
-    if (err) {
-      global.location = "notFound";
-    } 
-    let iterator = (page - 3) < 1 ? 1 : page;
-    let endingLink = (iterator + 5) <= numberofPages ? (iterator + 5) : page + 
-    (numberofPages - page);
-    if(endingLink < (page)) {
-      iterator -= (page) - numberofPages;
+                    obj.players = so_data.map((player) => ({
+                      playerName: player.PLAYER,
+                      playerUUID: player.UUID,
+                      elo: player.ELO,
+                    }));
+                    resolve(obj);
+                  }
+                );
+              });
+            })
+          );
+
+          const totalGamemodes = 20;
+
+          const result = leaderboardsData[0].players.reduce((acc, curr) => {
+            const existing = acc.find(
+              (item) => item.playerUUID === curr.playerUUID
+            );
+
+            if (existing) {
+              existing.elo += curr.elo;
+              existing.count += 1;
+            } else {
+              acc.push({ ...curr, count: 1 });
+            }
+
+            return acc;
+          }, []);
+
+          result.forEach((player) => {
+            player.elo = Math.round(
+              (player.elo + 1000 * (totalGamemodes - player.count)) / 20
+            );
+          });
+
+          const sortedResult = result.sort((a, b) => b.elo - a.elo);
+
+          leaderboardsData[0].players = sortedResult;
+
+          let paginationLeaderboardsData =
+            leaderboardsData.find((e) => e.gametype === parameterGametype) ||
+            res.redirect("/error");
+
+          res.render("practice", {
+            pp,
+            parameter: { parameterGametype, parameterSites },
+            paginationLeaderboardsData,
+          });
+        }
+      );
     }
-
-    db.conn_practice.query('SELECT `PLAYER` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;',
-    ["NoDebuff"],
-    async function (err, p_data, fields) {
-      var ee;
-      Object.keys(p_data).forEach(async function(key) {
-        ee = p_data[key];
-        });
-
-        db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players`;',
-        async function (err, player_data, fields) {
-          var pp = [];
-            Object.keys(player_data).forEach(function(key) {
-            row = player_data[key];
-            pp.push(row.playerName);
-        });
-
-    res.render('practice', {userData: data, page, iterator, endingLink, numberofPages, parameter, pp, ee});  
-}); 
+  );
 });
-}); 
-}); 
-});
-});
-
-
-
-
 
 module.exports = router;

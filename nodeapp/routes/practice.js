@@ -5,7 +5,7 @@ let db = require("../database");
 /* GET practice page. */
 router.get("/:gametype/:sites", function (req, res, next) {
   let parameterGametype = req.params.gametype;
-  let parameterSites = req.params.sites;
+  let parameterSites = Number(req.params.sites);
 
   db.mineral.query(
     "SELECT `playerName`, `playerUUID` FROM `players`;",
@@ -104,6 +104,8 @@ router.get("/:gametype/:sites", function (req, res, next) {
           let paginationLeaderboardsData =
             leaderboardsData.find((e) => e.gametype === parameterGametype) ||
             res.redirect("/error");
+
+            console.log(parameterSites);
 
           res.render("practice", {
             pp,

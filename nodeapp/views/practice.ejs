@@ -118,6 +118,11 @@
     </table>
     
     <div class="pagination">
+      <% if ((totalPages < parameter.parameterSites) || (isNaN(parameter.parameterSites))) { %>
+        <script>
+          location.href = '/practice/<%= parameter.parameterGametype %>/1';
+        </script>
+        <% }%>
       <% if (currentPage > 1) { %>
         <a href="/practice/<%= parameter.parameterGametype %>/1">⮈</a>
         <a href="/practice/<%= parameter.parameterGametype %>/<%= currentPage - 1 %>">🢦</a>

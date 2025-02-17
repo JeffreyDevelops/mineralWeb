@@ -4,7 +4,7 @@ let db = require("../database");
 
 /* GET player page. */
 router.get("/:username", function (req, res, next) {
-  db.conn_practice.query(
+  db.mineral.query(
     "SELECT `PLAYER`, `UUID` FROM `elo` WHERE `Gametype` = ? ORDER BY `ELO` DESC;",
     ["NoDebuff"],
     async function (err, data, fields) {
@@ -14,7 +14,7 @@ router.get("/:username", function (req, res, next) {
         row = data[key];
       });
 
-      db.conn_core.query(
+      db.mineral.query(
         "SELECT `playerName`, `playerUUID` FROM `players`;",
         async function (err, data, fields) {
           global.push_player = [];
@@ -23,7 +23,7 @@ router.get("/:username", function (req, res, next) {
             push_player.push(row.playerName, row.playerUUID);
           });
 
-          db.conn_core.query(
+          db.mineral.query(
             "SELECT * FROM `ranks`;",
             async function (err, data, fields) {
               global.ranks = [];
@@ -35,7 +35,7 @@ router.get("/:username", function (req, res, next) {
                 });
               });
 
-              db.conn_core.query(
+              db.mineral.query(
                 "SELECT * FROM `players` WHERE `playerName` = ?;",
                 [parameter],
                 async function (err, data, fields) {
@@ -49,7 +49,7 @@ router.get("/:username", function (req, res, next) {
                     }));
                   });
 
-                  db.conn_practice.query(
+                  db.mineral.query(
                     "SELECT * FROM `elo` WHERE `PLAYER` = ? ORDER BY `elo` DESC;",
                     [parameter],
                     async function (err, gametype_data, fields) {
@@ -70,7 +70,7 @@ router.get("/:username", function (req, res, next) {
                       leaderboardsData.unshift({ gametype: "Global", elo: globalElo });
                     }
                 
-                      db.conn_core.query(
+                      db.mineral.query(
                         "SELECT * FROM `players` WHERE `playerName` = ?",
                         [parameter],
                         async function (err, status_data, fields) {

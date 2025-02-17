@@ -4,7 +4,7 @@ let db = require("../database");
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
-  db.conn_core.query(
+  db.mineral.query(
     "SELECT `playerName`, `playerUUID` FROM `players`;",
     async function (err, data, fields) {
       global.push_player = [];
@@ -13,7 +13,7 @@ router.get("/", async function (req, res, next) {
         push_player.push(row.playerName, row.playerUUID);
       });
 
-      db.conn_practice.query(
+      db.mineral.query(
         "SELECT * FROM `elo` ORDER BY `elo` DESC;",
         async function (err, gametype_data, fields) {
           global.gametypes_gamemodes = [];
@@ -36,7 +36,7 @@ router.get("/", async function (req, res, next) {
             leaderboardsData.map(async (obj) => {
               if (obj.gametype === "Global") {
                 return new Promise((resolve, reject) => {
-                  db.conn_core.query(
+                  db.mineral.query(
                     "SELECT * FROM `elo` ORDER BY `elo` DESC ",
                     (err, so_data) => {
                       if (err) return reject(err);
@@ -53,7 +53,7 @@ router.get("/", async function (req, res, next) {
               }
 
               return new Promise((resolve, reject) => {
-                db.conn_core.query(
+                db.mineral.query(
                   "SELECT * FROM `elo` WHERE `GAMETYPE` = ? ORDER BY `elo` DESC ",
                   [obj.gametype],
                   (err, so_data) => {

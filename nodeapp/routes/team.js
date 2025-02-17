@@ -5,7 +5,7 @@ let db = require("../database");
 /* GET team page. */
 router.get("/", async function (req, res, next) {
 
-  db.conn_core.query('SELECT `playerName`, `playerUUID` FROM `players`;',
+  db.mineral.query('SELECT `playerName`, `playerUUID` FROM `players`;',
     async function (err, data, fields) {
 
       if (err) {
@@ -18,7 +18,7 @@ router.get("/", async function (req, res, next) {
       pp.push(row.playerName);
   });
 
-  db.conn_core.query( "SELECT  * FROM `ranks` WHERE `staffRank` = ? ORDER BY `rankPriority` DESC",[1],
+  db.mineral.query( "SELECT  * FROM `ranks` WHERE `staffRank` = ? ORDER BY `rankPriority` DESC",[1],
     async function (err, data, fields) {
       if (err) {
         return res.status(500).send("Error fetching game types");
@@ -32,7 +32,7 @@ router.get("/", async function (req, res, next) {
 
     await Promise.all(gameData.map(async (obj) => {
           return new Promise((resolve, reject) => {
-            db.conn_core.query(
+            db.mineral.query(
               "SELECT `playerName`, `playerUUID` FROM `players` WHERE `rank` = ?",
               [obj.rankName],
               (err, so_data) => {

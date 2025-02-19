@@ -267,7 +267,7 @@
       align-items: flex-start;
       background-size: cover;
       text-align: center;
-      padding: 1rem 10rem 1rem 1rem;
+      padding: 1rem 1rem 1rem 1rem;
     }
     .last_seen_text {
       display: inline-block!important;

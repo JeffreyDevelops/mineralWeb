@@ -10,6 +10,7 @@ var practiceRouter = require('./routes/practice');
 var leaderboardsRouter = require('./routes/leaderboards');
 var playerRouter = require('./routes/player');
 var teamRouter = require('./routes/team');
+var rulesRouter = require('./routes/rules');
 ;
 var app = express();
 
@@ -19,6 +20,7 @@ app.use('/practice', practiceRouter);
 app.use('/leaderboards', leaderboardsRouter);
 app.use('/player', playerRouter);
 app.use('/team', teamRouter);
+app.use('/rules', rulesRouter);
 
 
 

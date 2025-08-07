@@ -1,3 +1,4 @@
-# Mineral-Web
+# IMPORTANT: READ THE LICENSE
 
-<h2>Website of Mineral.gg</h2>
+# MineralWeb
+The website used on mineral.gg
